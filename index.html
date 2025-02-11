@@ -30,36 +30,56 @@
             z-index: -1;
         }
 
-        /* Sidebar Navigation */
-        .sidebar {
+        /* Custom Cursor */
+        .cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #64ffda;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, opacity 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .cursor.active {
+            transform: scale(2);
+            opacity: 1;
+        }
+
+        /* Header Styles */
+        header {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 250px;
-            height: 100vh;
-            background: rgba(10, 25, 47, 0.9);
+            width: 100%;
+            background: rgba(10, 25, 47, 0.8);
             backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             color: #64ffda;
-            margin-bottom: 2rem;
         }
 
         .nav-links {
             list-style: none;
-            text-align: center;
+            display: flex;
         }
 
         .nav-links li {
-            margin: 1rem 0;
+            margin-left: 1rem;
         }
 
         .nav-links a {
@@ -73,30 +93,8 @@
             transform: scale(1.1);
         }
 
-        .download-cv-sidebar {
-            margin-top: 2rem;
-        }
-
-        .download-cv-sidebar a {
-            background: #ff6f61;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .download-cv-sidebar a:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
-        }
-
-        /* Main Content */
-        main {
-            margin-left: 250px;
-        }
-
-        section {
+        /* Hero Section */
+        .hero {
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -107,7 +105,7 @@
             overflow: hidden;
         }
 
-        section::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -118,8 +116,7 @@
             z-index: -1;
         }
 
-        /* Hero Section */
-        .hero h1 {
+        .hero-content h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
             background: linear-gradient(90deg, #64ffda, #ff6f61);
@@ -137,7 +134,7 @@
             }
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
             animation: fadeIn 3s ease-in-out;
@@ -155,6 +152,25 @@
         .btn:hover {
             transform: scale(1.1);
             box-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda;
+        }
+
+        /* Download CV Button */
+        .download-cv {
+            margin-top: 1rem;
+        }
+
+        .download-cv a {
+            background: #ff6f61;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .download-cv a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
         }
 
         /* About Section */
@@ -367,6 +383,15 @@
             box-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda;
         }
 
+        /* Footer */
+        footer {
+            background: rgba(10, 25, 47, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from {
@@ -381,23 +406,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 1rem;
-            }
-
-            main {
-                margin-left: 0;
-            }
-
-            section {
-                height: auto;
-                padding: 4rem 1rem;
-            }
-
             .about-content {
                 flex-direction: column;
             }
@@ -413,106 +421,110 @@
     <!-- Particle Background -->
     <canvas id="particleCanvas"></canvas>
 
-    <!-- Sidebar Navigation -->
-    <div class="sidebar">
-        <div class="logo">Haroon Raza</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://www.linkedin.com/in/haroon-raza/" target="_blank">LinkedIn</a></li>
-        </ul>
-        <div class="download-cv-sidebar">
-            <a href="path-to-your-cv.pdf" download="Haroon-Raza-CV.pdf">Download CV</a>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">Haroon Raza</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Haroon Raza</h1>
+            <p>Data Scientist | Machine Learning Engineer | AI Enthusiast</p>
+            <div class="download-cv">
+                <a href="path-to-your-cv.pdf" download="Haroon-Raza-CV.pdf" class="btn">Download CV</a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Hi, I'm Haroon Raza</h1>
-                <p>Data Scientist | Machine Learning Engineer | AI Enthusiast</p>
-                <a href="#about" class="btn">Learn More</a>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="https://via.placeholder.com/200" alt="Profile Picture" class="profile-img">
+            <div class="bio">
+                <p>I am a Data Scientist with expertise in machine learning, artificial intelligence, and data analysis. I enjoy solving complex problems using Python, R, TensorFlow, and other cutting-edge tools.</p>
+                <p>When I'm not coding, you can find me exploring new datasets or working on personal projects.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <img src="men-8547227_640.jpeg" alt="Profile Picture" class="profile-img">
-                <div class="bio">
-                    <p>I am a Data Scientist with expertise in machine learning, artificial intelligence, and data analysis. I enjoy solving complex problems using Python, R, TensorFlow, and other cutting-edge tools.</p>
-                    <p>When I'm not coding, you can find me exploring new datasets or working on personal projects.</p>
-                </div>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">Python</div>
+            <div class="skill-item">R</div>
+            <div class="skill-item">TensorFlow</div>
+            <div class="skill-item">Machine Learning</div>
+            <div class="skill-item">Data Analysis</div>
+            <div class="skill-item">AI</div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project-item">
+                <h3>Project 1</h3>
+                <p>Description of the project goes here.</p>
             </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">Python</div>
-                <div class="skill-item">R</div>
-                <div class="skill-item">TensorFlow</div>
-                <div class="skill-item">Machine Learning</div>
-                <div class="skill-item">Data Analysis</div>
-                <div class="skill-item">AI</div>
+            <div class="project-item">
+                <h3>Project 2</h3>
+                <p>Description of the project goes here.</p>
             </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <h3>Project 1</h3>
-                    <p>Description of the project goes here.</p>
-                </div>
-                <div class="project-item">
-                    <h3>Project 2</h3>
-                    <p>Description of the project goes here.</p>
-                </div>
-                <div class="project-item">
-                    <h3>Project 3</h3>
-                    <p>Description of the project goes here.</p>
-                </div>
+            <div class="project-item">
+                <h3>Project 3</h3>
+                <p>Description of the project goes here.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="experience">
-            <h2>Experience</h2>
-            <div class="experience-grid">
-                <div class="experience-item">
-                    <h3>Data Scientist</h3>
-                    <p>Company Name | Jan 2020 - Present</p>
-                    <p>Developed machine learning models and analyzed large datasets.</p>
-                </div>
-                <div class="experience-item">
-                    <h3>AI Researcher</h3>
-                    <p>Company Name | Jun 2018 - Dec 2019</p>
-                    <p>Conducted research on deep learning algorithms.</p>
-                </div>
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <h2>Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-item">
+                <h3>Data Scientist</h3>
+                <p>Company Name | Jan 2020 - Present</p>
+                <p>Developed machine learning models and analyzed large datasets.</p>
             </div>
-        </section>
+            <div class="experience-item">
+                <h3>AI Researcher</h3>
+                <p>Company Name | Jun 2018 - Dec 2019</p>
+                <p>Conducted research on deep learning algorithms.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <h2>Contact Me</h2>
-            <form action="#" method="post" class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </section>
-    </main>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form action="#" method="post" class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Haroon Raza. All rights reserved.</p>
+    </footer>
 
     <!-- Particle JS -->
     <script>
@@ -577,6 +589,18 @@
 
         init();
         animate();
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+
+        document.querySelectorAll('a, button, .project-item, .experience-item').forEach(item => {
+            item.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            item.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+        });
     </script>
 </body>
 </html>
