@@ -56,14 +56,9 @@
             background: rgba(10, 25, 47, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
-        }
-
-        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 1rem;
         }
 
@@ -76,6 +71,7 @@
         .nav-links {
             list-style: none;
             display: flex;
+            align-items: center;
         }
 
         .nav-links li {
@@ -91,6 +87,24 @@
         .nav-links a:hover {
             color: #64ffda;
             transform: scale(1.1);
+        }
+
+        .download-cv-header {
+            margin-left: 1rem;
+        }
+
+        .download-cv-header a {
+            background: #ff6f61;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .download-cv-header a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
         }
 
         /* Hero Section */
@@ -154,25 +168,6 @@
             box-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda;
         }
 
-        /* Download CV Button */
-        .download-cv {
-            margin-top: 1rem;
-        }
-
-        .download-cv a {
-            background: #ff6f61;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .download-cv a:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
-        }
-
         /* About Section */
         .about {
             padding: 4rem 1rem;
@@ -222,119 +217,194 @@
         }
 
         /* Skills Section */
-        .skills {
-            padding: 4rem 1rem;
-            text-align: center;
-            background: rgba(10, 25, 47, 0.8);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
+.skills {
+    padding: 4rem 1rem;
+    text-align: center;
+    background: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
 
-        .skills::before {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: rgba(10, 25, 47, 0.8);
-            transform: skewY(3deg);
-            z-index: -1;
-        }
+.skills::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: rgba(10, 25, 47, 0.8);
+    transform: skewY(-3deg);
+    z-index: -1;
+}
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
 
-        .skill-item {
-            background: rgba(100, 255, 218, 0.2);
-            color: #64ffda;
-            padding: 1rem;
-            border-radius: 5px;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
+.skill-item {
+    background: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 
-        .skill-item:hover {
-            transform: scale(1.1);
-            background: rgba(100, 255, 218, 0.4);
-        }
+.skill-item:hover {
+    transform: scale(1.1);
+    background: rgba(100, 255, 218, 0.2);
+    box-shadow: 0 8px 12px rgba(100, 255, 218, 0.5);
+}
 
-        /* Projects Section */
-        .projects {
-            padding: 4rem 1rem;
-            text-align: center;
-            background: rgba(10, 25, 47, 0.8);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
+/* Projects Section */
+.projects {
+    padding: 4rem 1rem;
+    text-align: center;
+    background: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
 
-        .project-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.project-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 
-        .project-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 12px rgba(100, 255, 218, 0.5);
-        }
+.project-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #64ffda;
+}
 
-        /* Experience Section */
-        .experience {
-            padding: 4rem 1rem;
-            text-align: center;
-            background: rgba(10, 25, 47, 0.8);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-        }
+.project-item p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
 
-        .experience::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: rgba(10, 25, 47, 0.8);
-            transform: skewY(-3deg);
-            z-index: -1;
-        }
+.project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(100, 255, 218, 0.5);
+}
 
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+/* Experience Section */
+.experience {
+    padding: 4rem 1rem;
+    text-align: center;
+    background: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
 
-        .experience-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.experience::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: rgba(10, 25, 47, 0.8);
+    transform: skewY(-3deg);
+    z-index: -1;
+}
 
-        .experience-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 12px rgba(100, 255, 218, 0.5);
-        }
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
 
+.experience-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.experience-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: rgba(100, 255, 218, 0.1);
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+    padding: 1rem;
+}
+
+.experience-header:hover {
+    background: rgba(100, 255, 218, 0.2);
+}
+
+.icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.header-content {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.experience-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.experience-header p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.experience-details {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.experience-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.experience-details li {
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
         /* Contact Section */
         .contact {
             padding: 4rem 1rem;
@@ -426,89 +496,142 @@
 
     <!-- Header Section -->
     <header>
-        <nav>
-            <div class="logo">Haroon Raza</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="logo">Haroon Raza</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://www.linkedin.com/in/haroon-raza/" target="_blank">LinkedIn</a></li>
+            <li class="download-cv-header">
+                <a href="Haroon-Raza-CV.pdf" download="Haroon-Raza-CV.pdf">Download CV</a>
+            </li>
+        </ul>
     </header>
-
+    
     <!-- Home Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Hi, I'm Haroon Raza</h1>
-            <p>Data Scientist | Machine Learning Engineer | AI Enthusiast</p>
-            <div class="download-cv">
-                <a href="path-to-your-cv.pdf" download="Haroon-Raza-CV.pdf" class="btn">Download CV</a>
-            </div>
+            <p>Data Scientist | Electrical Engineer | AI Enthusiast</p>
         </div>
     </section>
-
+    
     <!-- About Section -->
     <section id="about" class="about">
         <h2>About Me</h2>
         <div class="about-content">
-            <img src="https://via.placeholder.com/200" alt="Profile Picture" class="profile-img">
+            <img src="men-8547227_640.jpeg" alt="Profile Picture" class="profile-img">
             <div class="bio">
-                <p>I am a Data Scientist with expertise in machine learning, artificial intelligence, and data analysis. I enjoy solving complex problems using Python, R, TensorFlow, and other cutting-edge tools.</p>
-                <p>When I'm not coding, you can find me exploring new datasets or working on personal projects.</p>
+                <p>I am an Electrical Engineer with a passion for creating intelligent systems that bridge innovation and sustainability. With experience in reverse engineering, real-time object detection, and AI-driven solutions, I aim to design impactful and scalable systems.</p>
+                <p>My expertise lies in circuit design, PCB design, Python, C++, MATLAB, IoT, and AI. I also have strong analytical, communication, and leadership skills, enabling me to collaborate effectively and solve complex challenges.</p>
             </div>
         </div>
     </section>
-
+    
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-item">Python</div>
-            <div class="skill-item">R</div>
-            <div class="skill-item">TensorFlow</div>
-            <div class="skill-item">Machine Learning</div>
-            <div class="skill-item">Data Analysis</div>
-            <div class="skill-item">AI</div>
-        </div>
-    </section>
+<section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-item">Circuit Design</div>
+        <div class="skill-item">PCB Design</div>
+        <div class="skill-item">Python</div>
+        <div class="skill-item">C++</div>
+        <div class="skill-item">MATLAB</div>
+        <div class="skill-item">IoT</div>
+        <div class="skill-item">AI</div>
+        <div class="skill-item">Data Analysis</div>
+        <div class="skill-item">Team Leadership</div>
+        <div class="skill-item">Technical Writing</div>
+    </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <div class="project-item">
-                <h3>Project 1</h3>
-                <p>Description of the project goes here.</p>
+<!-- Projects Section -->
+<section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+        <div class="project-item">
+            <h3>Smart Cart ML Module</h3>
+            <p>Developed an advanced smart e-cart system using machine learning and IoT technologies. Integrated barcode scanning, text-to-speech, and optimized AI inference with OpenVINO.</p>
+        </div>
+        <div class="project-item">
+            <h3>Smart Home System with ESP32</h3>
+            <p>Built a smart home system leveraging ESP32 for online device control via Firebase. Included temperature monitoring, fault detection, and load shifting for power optimization.</p>
+        </div>
+        <div class="project-item">
+            <h3>Line Following Robot</h3>
+            <p>Developed a line-following robot using PID control algorithms for precise movement and maze traversal.</p>
+        </div>
+        <div class="project-item">
+            <h3>Generator Auto On/Off</h3>
+            <p>Implemented an automated generator activation system with self-diagnostic features for reliability.</p>
+        </div>
+        <div class="project-item">
+            <h3>Home Automation Kit</h3>
+            <p>Engineered a comprehensive home automation solution enabling remote appliance control via mobile apps.</p>
+        </div>
+    </div>
+</section>
+    
+<!-- Experience Section -->
+<section id="experience" class="experience">
+    <h2>Experience</h2>
+    <div class="experience-grid">
+        <!-- Experience Item 1 -->
+        <div class="experience-item">
+            <div class="experience-header" onclick="toggleDetails(this)">
+                <span class="icon">></span>
+                <div class="header-content">
+                    <h3>Engineering Intern</h3>
+                    <p>National Institute of Electronics | June 2024 – August 2024</p>
+                </div>
             </div>
-            <div class="project-item">
-                <h3>Project 2</h3>
-                <p>Description of the project goes here.</p>
-            </div>
-            <div class="project-item">
-                <h3>Project 3</h3>
-                <p>Description of the project goes here.</p>
+            <div class="experience-details" style="display: none;">
+                <ul>
+                    <li>Reverse engineered and developed a library for dot matrix display systems, improving functionality and control.</li>
+                    <li>Worked on AI-based projects, including object detection with YOLO and text recognition using EasyOCR.</li>
+                    <li>Contributed to the design and implementation of a smart parking management system, integrating AI for real-time vehicle monitoring and license plate recognition.</li>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <h2>Experience</h2>
-        <div class="experience-grid">
-            <div class="experience-item">
-                <h3>Data Scientist</h3>
-                <p>Company Name | Jan 2020 - Present</p>
-                <p>Developed machine learning models and analyzed large datasets.</p>
+        <!-- Experience Item 2 -->
+        <div class="experience-item">
+            <div class="experience-header" onclick="toggleDetails(this)">
+                <span class="icon">></span>
+                <div class="header-content">
+                    <h3>Operations Manager</h3>
+                    <p>IEEE COMSATS University Islamabad | February 2024 – June 2024</p>
+                </div>
             </div>
-            <div class="experience-item">
-                <h3>AI Researcher</h3>
-                <p>Company Name | Jun 2018 - Dec 2019</p>
-                <p>Conducted research on deep learning algorithms.</p>
+            <div class="experience-details" style="display: none;">
+                <ul>
+                    <li>Managed operations for IEEE events, ensuring smooth execution and timely completion of tasks.</li>
+                    <li>Implemented modern productivity tools, particularly G Suite, to enhance team collaboration and project management efficiency.</li>
+                </ul>
             </div>
         </div>
-    </section>
+
+        <!-- Experience Item 3 -->
+        <div class="experience-item">
+            <div class="experience-header" onclick="toggleDetails(this)">
+                <span class="icon">></span>
+                <div class="header-content">
+                    <h3>Intern</h3>
+                    <p>Nobel Learning PBC | July 2023 – December 2023</p>
+                </div>
+            </div>
+            <div class="experience-details" style="display: none;">
+                <ul>
+                    <li>Completed four courses.</li>
+                    <li>Facilitated 2 courses with diverse co-facilitators, demonstrating effective communication and collaboration skills.</li>
+                    <li>Contributed to the development of a course on "Data Clustering & Visualization" by working closely with a diverse team of course designers and instructors.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -520,22 +643,22 @@
             <button type="submit" class="btn">Send Message</button>
         </form>
     </section>
-
+    
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Haroon Raza. All rights reserved.</p>
+        <p>&copy; 2025 Haroon Raza. All rights reserved.</p>
     </footer>
-
+    
     <!-- Particle JS -->
     <script>
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
-
+    
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
+    
         const particlesArray = [];
-
+    
         class Particle {
             constructor(x, y, directionX, directionY, size, color) {
                 this.x = x;
@@ -545,14 +668,14 @@
                 this.size = size;
                 this.color = color;
             }
-
+    
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
                 ctx.fillStyle = this.color;
                 ctx.fill();
             }
-
+    
             update() {
                 if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
                 if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
@@ -561,7 +684,7 @@
                 this.draw();
             }
         }
-
+    
         function init() {
             particlesArray.length = 0;
             for (let i = 0; i < 100; i++) {
@@ -574,33 +697,57 @@
                 particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
         }
-
+    
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particlesArray.forEach(particle => particle.update());
             requestAnimationFrame(animate);
         }
-
+    
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             init();
         });
 
+// Function to toggle experience details
+function toggleDetails(header) {
+    const parent = header.parentElement;
+    const details = parent.querySelector('.experience-details');
+    const icon = header.querySelector('.icon');
+
+    // Close all other expanded sections
+    document.querySelectorAll('.experience-item').forEach(item => {
+        if (item !== parent && item.querySelector('.experience-details').style.display === 'block') {
+            item.querySelector('.experience-details').style.display = 'none';
+            item.querySelector('.icon').textContent = '>';
+        }
+    });
+
+    // Toggle the clicked section
+    if (details.style.display === 'block') {
+        details.style.display = 'none';
+        icon.textContent = '>';
+    } else {
+        details.style.display = 'block';
+        icon.textContent = 'v';
+    }
+}
+    
         init();
         animate();
-
+    
         // Custom Cursor
         const cursor = document.querySelector('.cursor');
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.pageX + 'px';
             cursor.style.top = e.pageY + 'px';
         });
-
+    
         document.querySelectorAll('a, button, .project-item, .experience-item').forEach(item => {
             item.addEventListener('mouseenter', () => cursor.classList.add('active'));
             item.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
     </script>
-</body>
-</html>
+    </body>
+    </html>
