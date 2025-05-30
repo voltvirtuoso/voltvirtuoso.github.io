@@ -321,7 +321,7 @@
       }
 
       .bio {
-        text-align: center;
+        text-align: left;
       }
 
       .experience-item {
@@ -358,18 +358,18 @@
   </div>
 </section>
 
-<section id="about">
+<section id="about" class="about">
   <h2>About Me</h2>
   <div class="about-content">
     <img src="hr_p.jpg" alt="Profile Picture" class="profile-img">
     <div class="bio">
       <p>I am an Electrical Engineer with a passion for creating intelligent systems that bridge innovation and sustainability. With experience in reverse engineering, real-time object detection, and AI-driven solutions, I aim to design impactful and scalable systems.</p>
-      <p>My expertise lies in circuit design, PCB design, Python, C++, MATLAB, IoT, and AI. I also have strong analytical, communication, and leadership skills, enabling me to collaborate effectively and solve complex challenges.</p>
+      <p style="margin-top: 1rem;">My expertise lies in circuit design, PCB design, Python, C++, MATLAB, IoT, and AI. I also have strong analytical, communication, and leadership skills, enabling me to collaborate effectively and solve complex challenges.</p>
     </div>
   </div>
 </section>
 
-<section id="skills">
+<section id="skills" class="skills">
   <h2>Skills</h2>
   <div class="skills-grid">
     <div class="skill-item">Circuit Design</div>
@@ -385,7 +385,7 @@
   </div>
 </section>
 
-<section id="projects">
+<section id="projects" class="projects">
   <h2>Projects</h2>
   <div class="project-grid">
     <div class="project-item">
@@ -411,35 +411,37 @@
   </div>
 </section>
 
-<section id="experience">
-  <h2>Experience</h2>
+<section id="experience" class="experience">
+  <h2>Professional Experience</h2>
   <div class="experience-grid">
+    <!-- Job Item -->
     <div class="experience-item">
       <div class="experience-header" onclick="toggleDetails(this)">
-        <span class="icon">▶</span>
+        <span class="icon">+</span>
         <div class="header-content">
           <h3>Engineering Intern</h3>
           <p>National Institute of Electronics | June 2024 – August 2024</p>
         </div>
       </div>
-      <div class="experience-details">
+      <div class="experience-details" style="display: none;">
         <ul>
           <li>Reverse engineered and developed a library for dot matrix display systems.</li>
           <li>Worked on AI-based projects like YOLO and EasyOCR.</li>
-          <li>Contributed to a smart parking management system using AI.</li>
+          <li>Contributed to a smart parking management system using AI for vehicle monitoring and license plate recognition.</li>
         </ul>
       </div>
     </div>
 
+    <!-- Job Item -->
     <div class="experience-item">
       <div class="experience-header" onclick="toggleDetails(this)">
-        <span class="icon">▶</span>
+        <span class="icon">+</span>
         <div class="header-content">
           <h3>Operations Manager</h3>
           <p>IEEE COMSATS University Islamabad | Feb 2024 – Jun 2024</p>
         </div>
       </div>
-      <div class="experience-details">
+      <div class="experience-details" style="display: none;">
         <ul>
           <li>Managed IEEE event operations successfully.</li>
           <li>Improved collaboration using G Suite tools.</li>
@@ -447,15 +449,16 @@
       </div>
     </div>
 
+    <!-- Job Item -->
     <div class="experience-item">
       <div class="experience-header" onclick="toggleDetails(this)">
-        <span class="icon">▶</span>
+        <span class="icon">+</span>
         <div class="header-content">
           <h3>Intern</h3>
           <p>Nobel Learning PBC | July 2023 – Dec 2023</p>
         </div>
       </div>
-      <div class="experience-details">
+      <div class="experience-details" style="display: none;">
         <ul>
           <li>Completed four courses.</li>
           <li>Facilitated two diverse courses.</li>
@@ -466,7 +469,7 @@
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="contact">
   <h2>Contact Me</h2>
   <form class="contact-form">
     <input type="text" placeholder="Your Name" required />
@@ -545,15 +548,15 @@
 
     // Close other open sections
     document.querySelectorAll('.experience-details').forEach(d => d !== details ? d.style.display = 'none' : null);
-    document.querySelectorAll('.icon').forEach(i => i !== icon ? i.textContent = '▶' : null);
+    document.querySelectorAll('.icon').forEach(i => i !== icon ? i.textContent = '+' : null);
 
     // Toggle current section
     if (details.style.display === 'block') {
       details.style.display = 'none';
-      icon.textContent = '▶';
+      icon.textContent = '+';
     } else {
       details.style.display = 'block';
-      icon.textContent = '▼';
+      icon.textContent = '–';
     }
   }
 
