@@ -498,6 +498,171 @@
         left: 20px;
       }
     }
+
+    /* Centered Section Headings */
+.section-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #64ffda, #ff6f61);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 3s infinite alternate;
+}
+
+/* Project Cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3);
+}
+
+.project-icon {
+  font-size: 2rem;
+  color: #64ffda;
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  font-size: 1.2rem;
+  color: #64ffda;
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Timeline Experience Section */
+.timeline {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #64ffda;
+}
+
+.timeline-item {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: rgba(100, 255, 218, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.timeline-header:hover {
+  background: rgba(100, 255, 218, 0.2);
+}
+
+.icon {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.header-content h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #64ffda;
+}
+
+.header-content p {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.experience-details {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid #64ffda;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.experience-details ul {
+  list-style: disc inside;
+  padding-left: 1rem;
+  color: #ccc;
+  margin: 0;
+}
+
+.experience-details li {
+  margin-bottom: 0.5rem;
+}
+
+/* Timeline Circle Indicators */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #64ffda;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item::before {
+    left: 20px;
+  }
+
+  .timeline-header {
+    justify-content: flex-start;
+    padding-left: 40px;
+  }
+
+  .icon {
+    margin-left: 10px;
+  }
+}
   </style>
 </head>
 <body class="dark-mode">
@@ -555,54 +720,89 @@
   </div>
 </section>
 
+<!-- Projects Section -->
 <section id="projects" class="projects">
-  <h2>Projects</h2>
+  <h2 class="section-heading">Projects</h2>
   <div class="project-grid">
-    <div class="project-item">
+    <div class="project-card">
+      <div class="project-icon">📁</div>
       <h3>Smart Cart ML Module</h3>
       <p>Developed an advanced smart e-cart system using machine learning and IoT technologies. Integrated barcode scanning, text-to-speech, and optimized AI inference with OpenVINO.</p>
     </div>
-    <div class="project-item">
+    <div class="project-card">
+      <div class="project-icon">📡</div>
       <h3>Smart Home System with ESP32</h3>
       <p>Built a smart home system leveraging ESP32 for online device control via Firebase. Included temperature monitoring, fault detection, and load shifting for power optimization.</p>
     </div>
-    <div class="project-item">
+    <div class="project-card">
+      <div class="project-icon">🤖</div>
       <h3>Line Following Robot</h3>
       <p>Developed a line-following robot using PID control algorithms for precise movement and maze traversal.</p>
     </div>
-    <div class="project-item">
+    <div class="project-card">
+      <div class="project-icon">⚡</div>
       <h3>Generator Auto On/Off</h3>
       <p>Implemented an automated generator activation system with self-diagnostic features for reliability.</p>
     </div>
-    <div class="project-item">
+    <div class="project-card">
+      <div class="project-icon">🏠</div>
       <h3>Home Automation Kit</h3>
       <p>Engineered a comprehensive home automation solution enabling remote appliance control via mobile apps.</p>
     </div>
   </div>
 </section>
 
+<!-- Experience Section -->
 <section id="experience" class="experience">
-  <h2>Professional Experience</h2>
+  <h2 class="section-heading">Experience</h2>
   <div class="timeline">
     <div class="timeline-item">
-      <div class="timeline-header">Engineering Intern</div>
-      <div class="timeline-date">National Institute of Electronics | June 2024 – August 2024</div>
-      <div class="timeline-desc">
-        Reverse engineered and developed a library for dot matrix display systems. Worked on AI-based projects like YOLO and EasyOCR. Contributed to a smart parking management system using AI for vehicle monitoring and license plate recognition.
+      <div class="timeline-header" onclick="toggleDetails(this)">
+        <span class="icon">+</span>
+        <div class="header-content">
+          <h3>Engineering Intern</h3>
+          <p>National Institute of Electronics | June 2024 – August 2024</p>
+        </div>
+      </div>
+      <div class="experience-details" style="display: none;">
+        <ul>
+          <li>Reverse engineered and developed a library for dot matrix display systems.</li>
+          <li>Worked on AI-based projects like YOLO and EasyOCR.</li>
+          <li>Contributed to a smart parking management system using AI for vehicle monitoring and license plate recognition.</li>
+        </ul>
       </div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-header">Operations Manager</div>
-      <div class="timeline-date">IEEE COMSATS University Islamabad | Feb 2024 – Jun 2024</div>
-      <div class="timeline-desc">
-        Managed IEEE event operations successfully. Improved collaboration using G Suite tools.
+      <div class="timeline-header" onclick="toggleDetails(this)">
+        <span class="icon">+</span>
+        <div class="header-content">
+          <h3>Operations Manager</h3>
+          <p>IEEE COMSATS University Islamabad | Feb 2024 – Jun 2024</p>
+        </div>
+      </div>
+      <div class="experience-details" style="display: none;">
+        <ul>
+          <li>Managed IEEE event operations successfully.</li>
+          <li>Improved collaboration using G Suite tools.</li>
+        </ul>
       </div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-header">Intern</div>
-      <div class="timeline-date">Nobel Learning PBC | July 2023 – Dec 2023</div>
-      <div class="timeline-desc">
-        Completed four courses. Facilitated two diverse courses. Helped develop a course on Data Clustering & Visualization.
+      <div class="timeline-header" onclick="toggleDetails(this)">
+        <span class="icon">+</span>
+        <div class="header-content">
+          <h3>Intern</h3>
+          <p>Nobel Learning PBC | July 2023 – Dec 2023</p>
+        </div>
+      </div>
+      <div class="experience-details" style="display: none;">
+        <ul>
+          <li>Completed four courses.</li>
+          <li>Facilitated two diverse courses.</li>
+          <li>Helped develop a course on Data Clustering & Visualization.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -699,6 +899,28 @@
   function toggleTheme() {
     document.body.classList.toggle('dark-mode');
   }
+
+  function toggleDetails(header) {
+  const parent = header.parentElement;
+  const details = parent.querySelector('.experience-details');
+  const icon = header.querySelector('.icon');
+
+  document.querySelectorAll('.experience-details').forEach(d => {
+    if (d !== details) d.style.display = 'none';
+  });
+
+  document.querySelectorAll('.icon').forEach(i => {
+    if (i !== icon) i.textContent = '+';
+  });
+
+  if (details.style.display === 'block') {
+    details.style.display = 'none';
+    icon.textContent = '+';
+  } else {
+    details.style.display = 'block';
+    icon.textContent = '–';
+  }
+}
 
   // Scroll Animation
   const observer = new IntersectionObserver(entries => {
