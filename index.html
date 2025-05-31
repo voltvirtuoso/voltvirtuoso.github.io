@@ -358,18 +358,20 @@
 
     .timeline-item:nth-child(even) {
       left: 50%;
-      text-align: right;
+      text-align: left;
     }
 
     .timeline-item:nth-child(odd) {
-      left: 0;
+      left: 0%;
       text-align: left;
     }
+
 
     .timeline-header {
       font-weight: bold;
       font-size: 1.1rem;
       color: #64ffda;
+      width: 100%;
     }
 
     .timeline-date {
@@ -381,6 +383,7 @@
       margin-top: 0.5rem;
       font-size: 0.95rem;
       color: #ccc;
+      width: 50%;
     }
 
     .timeline-item::after {
@@ -480,7 +483,7 @@
       }
 
       .timeline-item {
-        width: 100%;
+        width: 50%;
         text-align: center;
       }
 
@@ -569,9 +572,10 @@
 
 .timeline-item {
   position: relative;
-  width: 100%;
+  width: 50%;
   margin-bottom: 2rem;
   text-align: center;
+  height: auto;
 }
 
 .timeline-header {
@@ -615,7 +619,7 @@
   padding: 1rem;
   margin-top: 0.5rem;
   transition: max-height 0.3s ease, opacity 0.3s ease;
-  max-height: 200px;
+  /* max-height: 200px; */
   overflow: hidden;
 }
 
@@ -631,18 +635,18 @@
 }
 
 /* Timeline Circle Indicators */
-.timeline-item::before {
+/* .timeline-item::before {
   content: '';
   position: absolute;
   top: 25px;
-  left: 50%;
+  left: 100%;
   transform: translateX(-50%);
   width: 12px;
   height: 12px;
   background: #64ffda;
   border-radius: 50%;
   z-index: 10;
-}
+} */
 
 /* Responsive */
 @media (max-width: 768px) {
