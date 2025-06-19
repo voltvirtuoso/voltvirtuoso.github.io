@@ -1,11 +1,10 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Haroon Raza - Electrical Engineer Portfolio</title>
+  <title>Haroon Raza - Electrical & Computer Engineer Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -13,7 +12,7 @@
     ::-webkit-scrollbar {
       width: 8px;
     }
-::-webkit-scrollbar-thumb {
+    ::-webkit-scrollbar-thumb {
       background-color: rgba(255,255,255,0.2);
       border-radius: 4px;
     }
@@ -23,12 +22,16 @@
 
   <!-- Header -->
   <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-semibold">Haroon Raza</h1>
-      <nav class="space-x-4">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center flex-wrap md:flex-nowrap">
+      <h1 class="text-2xl font-semibold mb-2 md:mb-0">Haroon Raza</h1>
+      <nav class="space-x-4 flex flex-wrap md:flex-nowrap">
         <button class="hover:text-blue-400" onclick="scrollToSection('about')">About</button>
         <button class="hover:text-blue-400" onclick="scrollToSection('skills')">Skills</button>
+        <button class="hover:text-blue-400" onclick="scrollToSection('tech-stack')">Tech Stack</button>
+        <button class="hover:text-blue-400" onclick="scrollToSection('education')">Education</button>
+        <button class="hover:text-blue-400" onclick="scrollToSection('experience')">Experience</button>
         <button class="hover:text-blue-400" onclick="scrollToSection('projects')">Projects</button>
+        <button class="hover:text-blue-400" onclick="scrollToSection('certifications')">Certifications</button>
         <button class="hover:text-blue-400" onclick="scrollToSection('contact')">Contact</button>
       </nav>
     </div>
@@ -38,14 +41,11 @@
   <section id="about" class="max-w-7xl mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
     <div class="flex-1">
       <h2 class="text-3xl md:text-4xl font-semibold mb-4">Haroon Raza</h2>
-      <p class="mb-4">Electrical Engineer (Computer) | Passionate about Circuit Design, IoT, AI, and Embedded Systems. Dedicated to innovative solutions and continuous learning.</p>
-      <p class="mb-2"><strong>Phone:</strong> +923311411160</p>
-      <p class="mb-2"><strong>Email:</strong> <a href="mailto:haroonraza63@gmail.com" class="text-blue-400 hover:underline">haroonraza63@gmail.com</a></p>
-      <p class="mb-2"><strong>Address:</strong> Hostel City Chattah Bakhtawar Islamabad</p>
-    </div>
-    <div class="flex-1">
-      <!-- Optional: Add a profile picture -->
-      <!-- <img src="your-image-url.jpg" alt="Haroon Raza" class="w-48 h-48 rounded-full mx-auto md:mx-0"> -->
+      <p class="mb-4">Electrical & Computer Engineer | Passionate about IoT, AI, Embedded Systems, and Cloud Technologies. Dedicated to innovative solutions and continuous learning.</p>
+      <p class="mb-2"><strong>📞</strong> +923311411160</p>
+      <p class="mb-2"><strong>📧</strong> <a href="mailto:haroonraza63@gmail.com" class="text-blue-400 hover:underline">haroonraza63@gmail.com</a></p>
+      <p class="mb-2"><strong>📍</strong> Meharban Colony, Chattah Bakhtawar, Islamabad, Pakistan</p>
+      <!-- <p class="mt-4">*Last Updated: April 28, 2025*</p> -->
     </div>
   </section>
 
@@ -55,46 +55,120 @@
       <h3 class="text-3xl font-semibold mb-8 text-center">Skills</h3>
       <div class="grid md:grid-cols-2 gap-8">
         <div>
-          <h4 class="text-xl font-semibold mb-4">Technical Skills</h4>
+          <h4 class="text-xl font-semibold mb-4">Core Skills</h4>
           <ul class="list-disc list-inside space-y-2">
             <li>Circuit Design, PCB Design</li>
-            <li>Python, C, C++, MATLAB</li>
-            <li>Proteus, OrCAD, Altium</li>
-            <li>Arduino, IoT, AI, DevOps</li>
+            <li>Embedded Systems, IoT, AI</li>
+            <li>Python, C/C++, MATLAB</li>
+            <li>Arduino, ESP32, Django</li>
+            <li>OpenVINO, Firebase</li>
           </ul>
         </div>
         <div>
           <h4 class="text-xl font-semibold mb-4">Additional Skills</h4>
           <ul class="list-disc list-inside space-y-2">
-            <li>Data Analysis</li>
-            <li>Cross-functional Collaboration</li>
-            <li>Technical Writing</li>
-            <li>Team Leadership & Strategic Planning</li>
-            <li>Languages: English, Urdu, Punjabi</li>
+            <li>DevOps, Docker, AWS</li>
+            <li>VoIP (FreeSWITCH), Linux Server Management</li>
+            <li>Data Analysis, Technical Writing</li>
+            <li>Leadership & Team Management</li>
+            <li>Languages: English (Pro), Urdu & Punjabi (Native)</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Tech Stack -->
+  <section id="tech-stack" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+    <h3 class="text-3xl font-semibold mb-8 text-center">Tech Stack & Tools</h3>
+    <div class="flex flex-wrap justify-center gap-4 text-center">
+      <span class="bg-gray-700 px-3 py-1 rounded">Circuit Design</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">PCB Design</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">Embedded Systems</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">IoT</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">AI</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">DevOps</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">VoIP (FreeSWITCH)</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">Docker</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">AWS</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">Python</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">C/C++</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">MATLAB</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">Arduino</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">ESP32</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">Django</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">OpenVINO</span>
+      <span class="bg-gray-700 px-3 py-1 rounded">Firebase</span>
+    </div>
+  </section>
+
   <!-- Education -->
-  <section id="education" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
-    <h3 class="text-3xl font-semibold mb-8 text-center">Education</h3>
-    <div class="space-y-6 max-w-3xl mx-auto">
-      <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-        <h4 class="text-xl font-semibold mb-2">COMSATS University Islamabad</h4>
-        <p class="mb-2"><strong>September 2021 – Expected July 2025</strong></p>
-        <p class="mb-2">Bachelor of Science, Electrical Engineering</p>
-        <ul class="list-disc list-inside mb-2">
-          <li>Gained circuit design skills and mastered core electrical engineering concepts.</li>
-          <li>Developed teamwork and organizational skills through IEEE volunteering and event organization.</li>
-          <li>Enhanced coding skills via challenges like LeetCode and GDSC.</li>
-        </ul>
+  <section id="education" class="bg-gray-800 py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h3 class="text-3xl font-semibold mb-8 text-center">Education</h3>
+      <div class="space-y-6 max-w-3xl mx-auto">
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">COMSATS University Islamabad</h4>
+          <p class="mb-2"><strong>Sept 2021 – Expected July 2025</strong></p>
+          <p>B.Sc. Electrical & Computer Engineering</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Punjab College of Commerce</h4>
+          <p class="mb-2"><strong>2018 - 2020</strong></p>
+          <p>Intermediate, Pre-Engineering</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Dar-e-Arqam School</h4>
+          <p class="mb-2"><strong>Matric</strong></p>
+          <p>Computer Science</p>
+        </div>
       </div>
-      <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-        <h4 class="text-xl font-semibold mb-2">Punjab College of Commerce</h4>
-        <p class="mb-2"><strong>2018 - 2020</strong></p>
-        <p>Intermediate, Pre-Engineering</p>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h3 class="text-3xl font-semibold mb-8 text-center">Experience</h3>
+      <div class="space-y-6 max-w-4xl mx-auto">
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">VoIP Intern</h4>
+          <p class="mb-2"><strong>Feb – Apr 2025</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>PBX systems, FreeSWITCH, Docker, CI/CD pipelines</li>
+            <li>Linux server management</li>
+          </ul>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Embedded Systems Intern</h4>
+          <p class="mb-2"><strong>Jan – Feb 2025</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>PIC16F877A-based microwave control</li>
+            <li>Firmware in C, MPLAB IDE</li>
+          </ul>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">AI & Software Intern</h4>
+          <p class="mb-2"><strong>Jun – Aug 2024</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>AI object detection (YOLO), text recognition (EasyOCR)</li>
+            <li>Dot matrix library development</li>
+          </ul>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Operations Manager</h4>
+          <p class="mb-2"><strong>Feb – Jun 2024</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>IEEE event coordination, G Suite for team productivity</li>
+          </ul>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-2">Remote Intern</h4>
+          <p class="mb-2"><strong>Jul – Dec 2023</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Course facilitation and development at Nobel Learning PBC</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -104,16 +178,41 @@
     <div class="max-w-7xl mx-auto px-4">
       <h3 class="text-3xl font-semibold mb-8 text-center">Projects</h3>
       <div class="grid md:grid-cols-2 gap-8">
-        <!-- Example project -->
         <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-          <h4 class="text-xl font-semibold mb-2">Smart Home Automation</h4>
-          <p>A IoT-based system to automate home appliances using Arduino and MQTT protocol.</p>
+          <h4 class="text-xl font-semibold mb-2">Smart Cart with ML & Raspberry Pi</h4>
+          <p>AI-powered shopping cart with object detection and real-time data processing.</p>
         </div>
         <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-          <h4 class="text-xl font-semibold mb-2">Data Analysis Dashboard</h4>
-          <p>Developed a data analysis dashboard using Python and MATLAB for real-time insights.</p>
+          <h4 class="text-xl font-semibold mb-2">ESP32 Smart Home with Firebase</h4>
+          <p>IoT-based home automation system with remote control and data logging.</p>
         </div>
-        <!-- Add more projects as needed -->
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+          <h4 class="text-xl font-semibold mb-2">Line-Following Robot</h4>
+          <p>Autonomous robot using sensors and microcontroller for line tracking.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+          <h4 class="text-xl font-semibold mb-2">Generator Auto Switch</h4>
+          <p>Automatic switching system for generator backup power.</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+          <h4 class="text-xl font-semibold mb-2">Home Automation Kit</h4>
+          <p>DIY kit for smart home automation with microcontrollers and sensors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+    <h3 class="text-3xl font-semibold mb-8 text-center">Certifications</h3>
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
+        <ul class="list-disc list-inside">
+          <li>Python Programming</li>
+          <li>C++ & MATLAB</li>
+          <li>AI Agents & Data Science</li>
+          <li>LeetCode Challenge</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -122,15 +221,15 @@
   <section id="contact" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
     <h3 class="text-3xl font-semibold mb-8 text-center">Contact Me</h3>
     <div class="max-w-2xl mx-auto bg-gray-700 p-8 rounded-lg shadow-lg space-y-4">
-      <p><strong>Phone:</strong> +923311411160</p>
-      <p><strong>Email:</strong> <a href="mailto:haroonraza63@gmail.com" class="text-blue-400 hover:underline">haroonraza63@gmail.com</a></p>
-      <p><strong>Address:</strong> Hostel City Chattah Bakhtawar Islamabad</p>
+      <p><strong>📞</strong> +923311411160</p>
+      <p><strong>📧</strong> <a href="mailto:haroonraza63@gmail.com" class="text-blue-400 hover:underline">haroonraza63@gmail.com</a></p>
+      <p><strong>📍</strong> Islamabad</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="bg-gray-800 py-6 text-center">
-    <p>&copy; 2024 Haroon Raza. All rights reserved.</p>
+    <p>&copy; 2025 Haroon Raza. All rights reserved.</p>
   </footer>
 
   <script>
