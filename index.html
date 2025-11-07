@@ -1,242 +1,1176 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Haroon Raza - Electrical & Computer Engineer Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Custom scrollbar for better aesthetics */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: rgba(255,255,255,0.2);
-      border-radius: 4px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Haroon Raza - Professional Engineering Terminal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        /* Left Side - Fixed/Stuck Section */
+        .left-side {
+            flex: 1;
+            background-color: #252525;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            overflow: hidden;
+            border-right: 1px solid #333;
+        }
+
+        .name-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .name {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .typing-container {
+            text-align: center;
+            margin: 1.5rem 0;
+            min-height: 2.5rem;
+        }
+
+        .typing-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #64ffda;
+            letter-spacing: 1px;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-stack-section {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #64ffda;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .tech-tag {
+            background-color: #333;
+            padding: 8px 16px;
+            border-radius: 4px;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            border: 1px solid #444;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .tech-tag:hover {
+            background-color: #444;
+            border-color: #50fa7b;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            color: #64ffda;
+            font-size: 0.95em;
+            text-align: center;
+        }
+
+        .social-links a:hover {
+            /* Optional: Add a hover effect for user experience */
+            text-decoration: underline; 
+            opacity: 0.9;
+        }
+
+        .linkedin-link {
+            /* Official LinkedIn Blue */
+            color: #64ffda; 
+        }
+
+        .github-link {
+            /* Official GitHub Black/Dark Gray */
+            color: #64ffda; 
+        }
+
+        /* Right Side - Terminal */
+        .right-side {
+            flex: 1;
+            background-color: #0a0a0a;
+            margin-left: 50%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .terminal-container {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            color: #00ff00;
+            font-size: 15px;
+            line-height: 1.5;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+
+        .terminal-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terminal-container::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        .terminal-container::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .terminal-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .terminal-line {
+            margin-bottom: 8px;
+            white-space: pre-wrap;
+        }
+
+        .welcome-message {
+            color: #64ffda;
+            margin-bottom: 10px;
+        }
+
+        .command-line {
+            color: #00ff00;
+        }
+
+        .prompt {
+            color: #50fa7b;
+            font-weight: bold;
+        }
+
+        .command-input-container {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            background-color: #0a0a0a;
+            border-top: 1px solid #333;
+        }
+
+        .input-prompt {
+            color: #50fa7b;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        #command-input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            outline: none;
+            flex: 1;
+            padding: 0;
+        }
+
+        .static-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #00ff00;
+            vertical-align: middle;
+            margin-left: 2px;
+            opacity: 0.8;
+        }
+
+        .error-output {
+            color: #ff5555;
+        }
+
+        .file-list {
+            color: #8be9fd;
+        }
+
+        .dir-list {
+            color: #bd93f9;
+        }
+
+        .completion-hint {
+            color: #6272a4;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .left-side {
+                position: relative;
+                width: 100%;
+                margin-left: 0;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .right-side {
+                margin-left: 0;
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .typing-text {
+                font-size: 1.4rem;
+            }
+            
+            .tech-stack {
+                gap: 8px;
+            }
+            
+            .tech-tag {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white font-poppins">
+<body>
+    <!-- Left Side - Fixed/Stuck Section -->
+    <div class="left-side">
+        <div class="name-container">
+            <h1 class="name">HAROON RAZA</h1>
+            <div class="typing-container">
+                <div class="typing-text" id="typing-role"></div>
+            </div>
+        </div>
+        
+        <div class="tech-stack-section">
+            <h2 class="section-title">TECH STACK</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Altium Designer</span>
+                <span class="tech-tag">OrCAD</span>
+                <span class="tech-tag">Proteus</span>
+                <span class="tech-tag">C/C++</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">MATLAB</span>
+                <span class="tech-tag">Arduino</span>
+                <span class="tech-tag">ESP32</span>
+                <span class="tech-tag">Raspberry Pi</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">FreeSWITCH</span>
+                <span class="tech-tag">Linux</span>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <h1>Contact Info</h1>
+            
+            <p>
+                <i class="fa-solid fa-phone"></i> +92 331 1411160
+                | <i class="fa-solid fa-envelope"></i> <strong>haroonraza63@gmail.com</strong>
+            </p>
 
-  <!-- Header -->
-  <header class="bg-gray-800 shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center flex-wrap md:flex-nowrap">
-      <h1 class="text-2xl font-semibold mb-2 md:mb-0">Haroon Raza</h1>
-      <nav class="space-x-4 flex flex-wrap md:flex-nowrap">
-        <button class="hover:text-blue-400" onclick="scrollToSection('about')">About</button>
-        <button class="hover:text-blue-400" onclick="scrollToSection('skills')">Skills</button>
-        <button class="hover:text-blue-400" onclick="scrollToSection('tech-stack')">Tech Stack</button>
-        <button class="hover:text-blue-400" onclick="scrollToSection('education')">Education</button>
-        <button class="hover:text-blue-400" onclick="scrollToSection('experience')">Experience</button>
-        <button class="hover:text-blue-400" onclick="scrollToSection('projects')">Projects</button>
-        <button class="hover:text-blue-400" onclick="scrollToSection('certifications')">Certifications</button>
-        <button class="hover:text-blue-400" onclick="scrollToSection('contact')">Contact</button>
-      </nav>
+            <p class="social-links">
+                <a href="https://linkedin.com/in/haroon-raza" target="_blank" title="LinkedIn Profile" class="linkedin-link">
+                    <i class="fa-brands fa-linkedin"></i> linkedin.com/in/haroon-raza
+                </a>
+                
+                <a href="https://github.com/voltvirtuoso" target="_blank" title="GitHub Repository" class="github-link">
+                    <i class="fa-brands fa-github"></i> github.com/voltvirtuoso
+                </a>
+            </p>
+        </div>
     </div>
-  </header>
 
-  <!-- Hero / About -->
-  <section id="about" class="max-w-7xl mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
-    <div class="flex-1">
-      <h2 class="text-3xl md:text-4xl font-semibold mb-4">Haroon Raza</h2>
-      <p class="mb-4">Electrical & Computer Engineer | Passionate about IoT, AI, Embedded Systems, and Cloud Technologies. Dedicated to innovative solutions and continuous learning.</p>
-      <p class="mb-2"><strong>📞</strong> +923311411160</p>
-      <p class="mb-2"><strong>📧</strong> <a href="mailto:haroonraza63@gmail.com" class="text-blue-400 hover:underline">haroonraza63@gmail.com</a></p>
-      <p class="mb-2"><strong>📍</strong> Meharban Colony, Chattah Bakhtawar, Islamabad, Pakistan</p>
-      <!-- <p class="mt-4">*Last Updated: April 28, 2025*</p> -->
+    <!-- Right Side - Terminal -->
+    <div class="right-side">
+        <div class="terminal-container" id="terminal-output">
+            <div class="terminal-line welcome-message">Welcome to Haroon Raza's Professional Engineering Terminal</div>
+            <div class="terminal-line">Type <span class="prompt">help</span> to see available commands</div>
+            <div class="terminal-line"></div>
+        </div>
+        
+        <div class="command-input-container">
+            <span class="input-prompt">$</span>
+            <input type="text" id="command-input" autofocus autocomplete="off">
+            <span class="static-cursor"></span>
+        </div>
+
+        <script>
+            // Professional Terminal with robust error handling
+            const terminalOutput = document.getElementById('terminal-output');
+            const commandInput = document.getElementById('command-input');
+            const typingRole = document.getElementById('typing-role');
+            
+            // File system structure
+            const fileSystem = {
+                '/': {
+                    type: 'directory',
+                    contents: {
+                        'projects': {
+                            type: 'directory',
+                            contents: {
+                                'smart-cart.txt': {
+                                    type: 'file',
+                                    content: `Smart Cart ML Module
+Advanced smart e-cart system utilizing machine learning and IoT technologies for retail optimization.
+Technologies: Python, Raspberry Pi 5, Docker, TensorFlow, Django, RAG, FSOD
+Status: Completed
+Key Features:
+• Optimized item detection using barcode scanning as primary method
+• Designed interactive touch interface powered by Raspberry Pi 5
+• Implemented Few-Shot Object Detection (FSOD) model based on ResNet-18
+• Embedded RAG-based chatbot for contextual assistance
+• Fully containerized all components using Docker
+• Focused on energy-efficient design for sustainable retail operations
+• Developed Django-based admin interface for sales insights
+`
+                                },
+                                'smart-home.txt': {
+                                    type: 'file',
+                                    content: `Smart Home System with ESP32
+Comprehensive IoT-based smart home automation system with power management and monitoring capabilities.
+Technologies: ESP32, Firebase, MIT App Inventor, IoT, Sensors
+Status: Completed
+Key Features:
+• Developed ESP32-based system allowing online control of up to two devices via Firebase integration
+• Engineered robust data storage solution for monitoring temperature, humidity, and power utilization
+• Created dynamic mobile application using MIT App Inventor for seamless user control
+• Implemented intelligent load shifting feature prioritizing solar power
+• Added built-in ATS for back up power generator
+• Designed fault detection system signaling generator issues directly in mobile app
+• Achieved real-time display of environmental (temparatue, humidity) and power data
+`
+                                },
+                                'line-robot.txt': {
+                                    type: 'file',
+                                    content: `Line Following Robot
+Precision line-following robot using PID control algorithm for accurate navigation through complex paths.
+Technologies: Arduino, PID Control, Sensors, Embedded Systems
+Status: Completed
+Key Features:
+• Successfully developed line-following robot with precise movement capabilities using PID control algorithm
+• Enabled robot to traverse complex mazes with high accuracy and stability
+• Integrated robotics concepts like PID control and embedded systems for functional autonomous navigation
+• Optimized sensor readings and motor control for smooth path following
+`
+                                },
+                                'generator-auto.txt': {
+                                    type: 'file',
+                                    content: `Generator Auto On/Off System
+Automated generator control system with self-diagnostic capabilities for seamless power backup.
+Technologies: Microcontrollers, Sensors, Automation
+Status: Completed
+Key Features:
+• Implemented automated generator activation and deactivation system for seamless power backup during outages
+• Engineered self-diagnostic feature indicating engine problems for enhanced reliability and ease of maintenance
+• Designed fail-safe mechanisms to prevent generator damage during abnormal conditions
+• Optimized response time for immediate power restoration during grid failures
+`
+                                }
+                            }
+                        },
+                        'about.txt': {
+                            type: 'file',
+                            content: `ABOUT HAROON RAZA:
+
+👨‍🎓 Electrical Engineer (Computer) specializing in embedded systems and IoT
+🎯 Core Focus: PCB Design, Embedded Firmware, IoT Systems, AI/ML 
+💡 Proven experience in VoIP systems, embedded development, and small scale AI/ML projects
+
+KEY STRENGTHS:
+• PCB Design: Professional circuit board design using Altium, OrCAD, and Proteus
+• Embedded Systems: Firmware development in C/C++ for Arduino, ESP32, and PIC microcontrollers
+• IoT Engineering: End-to-end IoT solutions with sensor integration, cloud connectivity, and mobile apps
+• AI/ML Applications: Practical implementation of machine learning models for real-world engineering problems
+• DevOps & VoIP: Containerization, cloud deployment, and telephony system development
+
+EXPERIENCE HIGHLIGHTS:
+• VoIP Engineering Intern at GOMARKHO: PBX systems with FreeSWITCH, Docker, and AWS
+• Embedded Systems Intern at Emertxe: PIC16F877A microcontroller development
+• Engineering Intern at NIE: AI projects including YOLO object detection and EasyOCR
+• IEEE Operations Manager: Event management and team leadership
+
+PROJECT PORTFOLIO:
+• Smart Cart ML Module: AI-powered retail solution with barcode scanning and RAG chatbot
+• Smart Home System: ESP32-based automation with power management and mobile control
+• Line Following Robot: PID-controlled navigation system for complex paths
+• Generator Auto Control: Automated power backup system with self-diagnostics
+
+CONTACT:
+📱 +92 331 1411160
+✉️ haroonraza63@gmail.com
+🌐 linkedin.com/in/haroon-raza
+`
+                        },
+                        'skills.txt': {
+                            type: 'file',
+                            content: `TECHNICAL SKILLS:
+
+🔧 PCB DESIGN & CIRCUIT ANALYSIS:
+• Altium Designer: Professional PCB layout, multi-layer boards
+• OrCAD/Proteus: Schematic capture, simulation, PCB design, and manufacturing file generation
+• Circuit Analysis: Analog/digital circuit design, power supply design, signal processing
+• Manufacturing Standards: Gerber file generation, DRC checking, component placement optimization
+
+🔧 EMBEDDED SYSTEMS DEVELOPMENT:
+• C/C++ Programming: Low-level firmware development, memory management, real-time systems
+• Microcontrollers: Arduino (AVR), ESP32 (ESP-IDF), PIC16F877A architecture
+• Hardware Interfaces: UART, SPI, I2C, ADC, PWM, GPIO control, interrupt handling
+• Debugging Tools: Logic analyzers, oscilloscopes, JTAG debugging, serial monitoring
+
+🔧 IOT & SYSTEMS INTEGRATION:
+• Hardware Platforms: ESP32, Raspberry Pi 3/4/5, various sensors and actuators
+• Cloud Platforms: Firebase Realtime Database, AWS IoT Core, cloud function integration
+• Mobile Development: MIT App Inventor for custom IoT control applications
+• Networking: MQTT protocol, REST APIs, wireless communication (WiFi, Bluetooth)
+
+🔧 AI/ML & DATA SCIENCE:
+• Python Libraries: NumPy, Pandas, TensorFlow, OpenCV, scikit-learn
+• Computer Vision: YOLO object detection, EasyOCR text recognition, image processing
+• Machine Learning: Supervised/unsupervised learning, model training and deployment
+• Edge Computing: Optimizing AI models for resource-constrained embedded devices
+
+🔧 DEVOPS & TELECOM:
+• Containerization: Docker, Docker Compose for microservices architecture
+• Cloud Services: AWS EC2, S3, Lambda functions, CI/CD pipeline setup
+• VoIP Systems: FreeSWITCH configuration, SIP protocol, PBX implementation
+• Linux Administration: Bash scripting, server monitoring, security hardening
+`
+                        },
+                        'resume.txt': {
+                            type: 'file',
+                            content: `PROFESSIONAL RESUME:
+
+EDUCATION:
+🎓 COMSATS University Islamabad
+   Bachelor of Science, Electrical Engineering (2021-2025)
+   Achievement/s: Campus Bronze Medal
+   Relevant Coursework: Digital Logic Design, Control Systems, Microprocessor Systems, 
+   Electrical Measurement & Instrumentation, Programming Fundamentals, OOP
+
+WORK EXPERIENCE:
+🔧 GOMARKHO - VoIP Engineering Intern (Feb-Apr 2025)
+   • Developed PBX systems using FreeSWITCH with call routing and session management
+   • Containerized applications using Docker and deployed on AWS cloud infrastructure
+   • Automated server setup and monitoring using Bash scripting
+   • Managed Linux-based VoIP servers
+
+🔧 Emertxe - Embedded Systems Intern (Jan-Feb 2025)
+   • Designed microcontroller-based microwave oven system using PIC16F877A
+   • Developed firmware in C using MPLAB IDE with interrupt-driven functionality
+   • Implemented keypad debouncing and LCD display control
+   • Simulated system behavior using PICSim for validation
+
+🔧 National Institute of Electronics - Engineering Intern (Jun-Aug 2024)
+   • Reverse engineered dot matrix display systems and developed ESP32 based control libraries
+   • Worked on AI projects including YOLO object detection and EasyOCR text recognition for Smart Parking Management System
+   • Contributed to smart parking management system with license plate recognition
+
+KEY ACHIEVEMENTS:
+🏆 Organized PSYWSC'23, a prestigious IEEE event at COMSATS University
+🏆 Completed 30 Days of Code Leetcode Challenge with GDSC COMSATS
+🏆 Developed 5+ IoT and embedded systems projects with practical applications
+🏆 Secured Campus Bronze Medal
+
+CERTIFICATIONS:
+✅ Programming Essentials in C++ (CISCO)
+✅ Python Essentials – I (CISCO) 
+✅ Introduction to Programming with MATLAB (Coursera)
+✅ AI Agents Course (Hugging Face)
+✅ Applied Data Science Lab (WorldQuant University)
+`
+                        },
+                        'system_info.txt': {
+                            type: 'file',
+                            content: `SYSTEM INFORMATION:
+Terminal Version: 3.0.0
+Kernel: Engineering-Shell 5.15.0
+Uptime: 123 days, 4 hours, 22 minutes
+Memory: 16GB DDR4
+Storage: 512GB SSD
+Processor: Intel Core i7-11800H
+Engineering Modules: PCB-Designer, Embedded-FW, IoT-Systems, AI-ML, VoIP-Engineer
+Environment: PRODUCTION
+Last Login: Today 14:30:22 from 192.168.1.100
+`
+                        }
+                    }
+                }
+            };
+
+            // Shell state
+            let currentPath = '/';
+            let commandHistory = [];
+            let historyIndex = -1;
+            let environment = {
+                USER: 'haroon',
+                HOSTNAME: 'engineering-terminal',
+                HOME: '/',
+                PATH: '/usr/bin:/bin',
+                SHELL: '/bin/eng-shell',
+                PWD: currentPath
+            };
+
+            // Terminal commands - only implemented features
+            const commands = {
+                help: () => {
+                    return `
+Professional Engineering Terminal - Help
+
+CORE COMMANDS:
+  help                     - Show this help message
+  ls [path]                - List directory contents
+  cat <file>               - Display file contents
+  cd <directory>           - Change directory (..: parent, /: root, ~: home)
+  pwd                      - Show current working directory
+  clear                    - Clear terminal screen
+  whoami                   - Show user identity and system info
+  echo <text>              - Display text or variables (echo $PATH)
+  env                      - Show environment variables
+  history                  - Show command history
+
+FILE NAVIGATION:
+  ls projects              - List all engineering projects
+  cat projects/<project>   - View specific project details
+  cat about.txt            - Show professional summary
+  cat skills.txt           - Show technical skills details
+  cat resume.txt           - Show resume information
+
+EXAMPLES:
+  ls projects              - List all project files
+  cat projects/smart-cart.txt - View Smart Cart project details
+  cd projects              - Navigate to projects directory
+  cat about.txt skills.txt - Show multiple files
+  ls *.txt                 - List all text files in current directory
+  echo $USER               - Display current user
+`;
+                },
+                ls: (args) => {
+                    const paths = args.filter(arg => !arg.startsWith('-'));
+                    const path = paths.length > 0 ? resolvePath(paths[0]) : currentPath;
+                    
+                    const dir = navigateToPath(fileSystem, path);
+                    if (!dir) return `ls: cannot access '${path}': No such file or directory`;
+                    if (dir.type !== 'directory') return `ls: '${path}' is not a directory`;
+                    
+                    let entries = Object.entries(dir.contents);
+                    
+                    if (entries.length === 0) return 'empty';
+                    
+                    // Color-coded output
+                    return entries.map(([name, item]) => {
+                        if (item.type === 'directory') {
+                            return `<span class="dir-list">${name}/</span>`;
+                        }
+                        return `<span class="file-list">${name}</span>`;
+                    }).join('  ');
+                },
+                cat: (args) => {
+                    if (args.length === 0) return 'Usage: cat <file>';
+                    
+                    const filesToProcess = [];
+                    for (const arg of args) {
+                        if (arg.includes('*')) {
+                            // Expand wildcards
+                            const results = expandWildcards(arg);
+                            if (results.length === 0) {
+                                return `cat: ${arg}: No such file or directory`;
+                            }
+                            filesToProcess.push(...results);
+                        } else {
+                            const filePath = resolvePath(arg);
+                            const file = navigateToPath(fileSystem, filePath);
+                            if (file && file.type === 'file') {
+                                filesToProcess.push(file);
+                            } else {
+                                return `cat: ${arg}: No such file or directory`;
+                            }
+                        }
+                    }
+                    
+                    return filesToProcess.map(file => file.content).join('\n\n---\n\n');
+                },
+                cd: (args) => {
+                    if (args.length === 0 || args[0] === '~' || args[0] === '/') {
+                        currentPath = '/';
+                        updateEnvironment();
+                        return '';
+                    }
+                    
+                    const target = args[0];
+                    if (target === '..') {
+                        const parts = currentPath.split('/').filter(p => p);
+                        if (parts.length > 0) {
+                            parts.pop();
+                            currentPath = '/' + parts.join('/');
+                        }
+                    } else {
+                        const newPath = resolvePath(target);
+                        const dir = navigateToPath(fileSystem, newPath);
+                        if (dir && dir.type === 'directory') {
+                            currentPath = newPath;
+                        } else {
+                            return `cd: no such file or directory: ${target}`;
+                        }
+                    }
+                    
+                    updateEnvironment();
+                    return '';
+                },
+                pwd: () => {
+                    return currentPath;
+                },
+                clear: () => {
+                    terminalOutput.innerHTML = '';
+                    return '';
+                },
+                whoami: () => {
+                    return `
+USER: ${environment.USER}@${environment.HOSTNAME}
+SHELL: ${environment.SHELL}
+HOME: ${environment.HOME}
+CURRENT DIR: ${currentPath}
+
+ENGINEERING SPECIALIZATIONS:
+• PCB Design Engineer (Altium, OrCAD, Proteus)
+• Embedded Systems Developer (C/C++, Arduino, ESP32)
+• IoT Systems Engineer (Raspberry Pi, Firebase, Sensors)
+• AI/ML Integration Specialist (Python, TensorFlow, Computer Vision)
+• VoIP Engineer (FreeSWITCH, Docker, AWS)
+
+SYSTEM INFO:
+Terminal Version: 3.0.0
+Uptime: 123 days, 4 hours, 22 minutes
+Memory: 16GB DDR4
+Last Login: Today 14:30:22
+`;
+                },
+                echo: (args) => {
+                    if (args.length === 0) return '';
+                    
+                    let output = args.join(' ');
+                    
+                    // Handle environment variables
+                    output = output.replace(/\$([A-Z_]+)/g, (match, varName) => {
+                        return environment[varName] || match;
+                    });
+                    
+                    return output;
+                },
+                env: () => {
+                    return Object.entries(environment)
+                        .map(([key, value]) => `${key}=${value}`)
+                        .join('\n');
+                },
+                history: () => {
+                    return commandHistory
+                        .map((cmd, index) => `${(index + 1).toString().padStart(4)}  ${cmd}`)
+                        .join('\n');
+                },
+                default: (command) => {
+                    return `command not found: ${command}`;
+                }
+            };
+
+            // Tab completion system
+            let completionState = {
+                prefix: '',
+                matches: [],
+                index: 0,
+                baseDir: '',
+                currentWord: ''
+            };
+
+            function navigateToPath(fs, path) {
+                if (path === '/') return fs['/'];
+                
+                const parts = path.split('/').filter(p => p);
+                let current = fs['/'];
+                
+                for (const part of parts) {
+                    if (current.type === 'directory' && current.contents[part]) {
+                        current = current.contents[part];
+                    } else {
+                        return null;
+                    }
+                }
+                
+                return current;
+            }
+
+            function resolvePath(path) {
+                if (path.startsWith('/')) return path;
+                if (path.startsWith('./')) return `${currentPath}/${path.substring(2)}`;
+                if (path === '..') {
+                    const parts = currentPath.split('/').filter(p => p);
+                    if (parts.length > 0) {
+                        parts.pop();
+                        return '/' + parts.join('/');
+                    }
+                    return '/';
+                }
+                return `${currentPath}/${path}`;
+            }
+
+            function getCommandSuggestions(prefix) {
+                return Object.keys(commands).filter(cmd => cmd.startsWith(prefix));
+            }
+
+            function getFileSuggestions(currentInput, cursorPos) {
+                const words = currentInput.substring(0, cursorPos).split(' ');
+                const currentWord = words[words.length - 1];
+                
+                if (!currentWord) return { suggestions: [], basePath: currentPath, partialName: '' };
+                
+                // Handle absolute paths
+                if (currentWord.startsWith('/')) {
+                    const parts = currentWord.split('/').filter(p => p);
+                    let basePath = '/';
+                    
+                    for (let i = 0; i < parts.length - 1; i++) {
+                        const nextPath = basePath + (basePath.endsWith('/') ? '' : '/') + parts[i];
+                        const dir = navigateToPath(fileSystem, nextPath);
+                        if (dir && dir.type === 'directory') {
+                            basePath = nextPath;
+                        } else {
+                            return { suggestions: [], basePath: basePath, partialName: parts[i] || '' };
+                        }
+                    }
+                    
+                    const partialName = parts[parts.length - 1] || '';
+                    const dir = navigateToPath(fileSystem, basePath);
+                    if (!dir || dir.type !== 'directory') {
+                        return { suggestions: [], basePath: basePath, partialName: partialName };
+                    }
+                    
+                    const suggestions = Object.entries(dir.contents)
+                        .filter(([name]) => name.startsWith(partialName))
+                        .map(([name, item]) => ({
+                            name: name + (item.type === 'directory' ? '/' : ''),
+                            type: item.type,
+                            fullPath: basePath + (basePath.endsWith('/') ? '' : '/') + name + (item.type === 'directory' ? '/' : '')
+                        }));
+                    
+                    return { suggestions, basePath, partialName };
+                }
+                
+                // Handle relative paths
+                const parts = currentWord.split('/');
+                let basePath = currentPath;
+                let partialName = parts[parts.length - 1] || '';
+                
+                if (parts.length > 1) {
+                    // Handle relative subdirectories
+                    const dirPath = parts.slice(0, -1).join('/');
+                    basePath = resolvePath(dirPath);
+                }
+                
+                const dir = navigateToPath(fileSystem, basePath);
+                if (!dir || dir.type !== 'directory') {
+                    return { suggestions: [], basePath: basePath, partialName: partialName };
+                }
+                
+                const suggestions = Object.entries(dir.contents)
+                    .filter(([name]) => name.startsWith(partialName))
+                    .map(([name, item]) => ({
+                        name: name + (item.type === 'directory' ? '/' : ''),
+                        type: item.type,
+                        fullPath: (basePath === '/' ? '' : basePath) + '/' + name + (item.type === 'directory' ? '/' : '')
+                    }));
+                
+                return { suggestions, basePath, partialName };
+            }
+
+            function handleTabCompletion() {
+                const currentValue = commandInput.value;
+                const cursorPos = commandInput.selectionStart;
+                
+                if (!currentValue.trim()) return;
+                
+                const words = currentValue.split(' ');
+                const currentWordIndex = words.length - 1;
+                const currentWord = words[currentWordIndex];
+                
+                // If continuing a previous completion cycle
+                if (currentValue === completionState.prefix && completionState.matches.length > 1) {
+                    completionState.index = (completionState.index + 1) % completionState.matches.length;
+                    commandInput.value = completionState.matches[completionState.index];
+                    commandInput.setSelectionRange(commandInput.value.length, commandInput.value.length);
+                    return;
+                }
+                
+                // Reset completion state
+                completionState = { prefix: '', matches: [], index: 0, baseDir: '', currentWord: '' };
+                
+                let suggestions = [];
+                let basePath = currentPath;
+                let partialName = '';
+                
+                if (words.length === 1) {
+                    // Command completion
+                    suggestions = getCommandSuggestions(currentWord).map(cmd => ({ name: cmd, type: 'command' }));
+                } else {
+                    // File/directory completion
+                    const result = getFileSuggestions(currentValue, cursorPos);
+                    suggestions = result.suggestions;
+                    basePath = result.basePath;
+                    partialName = result.partialName;
+                }
+                
+                if (suggestions.length === 0) return;
+                
+                completionState.prefix = currentValue;
+                completionState.baseDir = basePath;
+                completionState.currentWord = currentWord;
+                
+                if (suggestions.length === 1) {
+                    // Single match - complete it
+                    const match = suggestions[0];
+                    let completedValue;
+                    
+                    if (words.length === 1) {
+                        // Command completion
+                        completedValue = match.name;
+                    } else {
+                        // File/directory completion - preserve path structure
+                        const prefixWords = words.slice(0, -1);
+                        
+                        if (match.type === 'directory') {
+                            completedValue = [...prefixWords, match.fullPath].join(' ');
+                        } else {
+                            // For files, show full path if it's not in current directory
+                            if (basePath === currentPath) {
+                                completedValue = [...prefixWords, match.name].join(' ');
+                            } else {
+                                completedValue = [...prefixWords, match.fullPath].join(' ');
+                            }
+                        }
+                    }
+                    
+                    commandInput.value = completedValue;
+                    commandInput.setSelectionRange(commandInput.value.length, commandInput.value.length);
+                    completionState.matches = [completedValue];
+                    completionState.index = 0;
+                } else {
+                    // Multiple matches - find common prefix
+                    let commonPrefix = suggestions[0].name;
+                    for (let i = 1; i < suggestions.length; i++) {
+                        let j = 0;
+                        while (j < commonPrefix.length && j < suggestions[i].name.length && 
+                               commonPrefix[j] === suggestions[i].name[j]) {
+                            j++;
+                        }
+                        commonPrefix = commonPrefix.substring(0, j);
+                    }
+                    
+                    if (commonPrefix.length > partialName.length) {
+                        // Complete to common prefix
+                        const prefixWords = words.slice(0, -1);
+                        let completedPath;
+                        
+                        if (basePath === '/') {
+                            completedPath = '/' + commonPrefix;
+                        } else if (basePath === currentPath) {
+                            completedPath = commonPrefix;
+                        } else {
+                            completedPath = basePath + (basePath.endsWith('/') ? '' : '/') + commonPrefix;
+                        }
+                        
+                        const completedValue = [...prefixWords, completedPath].join(' ');
+                        commandInput.value = completedValue;
+                        commandInput.setSelectionRange(commandInput.value.length, commandInput.value.length);
+                        
+                        // Generate full matches for cycling
+                        completionState.matches = suggestions.map(s => {
+                            if (s.type === 'directory') {
+                                return [...prefixWords, s.fullPath].join(' ');
+                            } else {
+                                if (basePath === currentPath) {
+                                    return [...prefixWords, s.name].join(' ');
+                                } else {
+                                    return [...prefixWords, s.fullPath].join(' ');
+                                }
+                            }
+                        });
+                        completionState.index = 0;
+                    } else {
+                        // Show all matches without completing
+                        const matchList = suggestions.map(s => s.name).join(', ');
+                        addToTerminal(`Possible completions: ${matchList}`);
+                        completionState.matches = suggestions.map(s => {
+                            const prefixWords = words.slice(0, -1);
+                            if (s.type === 'directory') {
+                                return [...prefixWords, s.fullPath].join(' ');
+                            } else {
+                                if (basePath === currentPath) {
+                                    return [...prefixWords, s.name].join(' ');
+                                } else {
+                                    return [...prefixWords, s.fullPath].join(' ');
+                                }
+                            }
+                        });
+                        completionState.index = 0;
+                    }
+                }
+            }
+
+            // FIXED: Robust command execution with error handling
+            function executeCommand(command) {
+                try {
+                    const [cmd, ...args] = command.split(/\s+/).filter(Boolean);
+                    
+                    if (commands[cmd]) {
+                        return commands[cmd](args);
+                    }
+                    
+                    return `command not found: ${cmd}`;
+                } catch (error) {
+                    console.error('Command execution error:', error);
+                    return `Error executing command: ${error.message || error.toString()}`;
+                }
+            }
+
+            function updateEnvironment() {
+                environment.PWD = currentPath;
+            }
+
+            function addToTerminal(text, isCommand = false) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                
+                if (isCommand) {
+                    line.innerHTML = `<span class="input-prompt">$</span> ${escapeHTML(text)}`;
+                } else {
+                    if (typeof text === 'string' && (text.includes('<div') || text.includes('<span'))) {
+                        line.innerHTML = text;
+                    } else {
+                        const escapedText = escapeHTML(text);
+                        
+                        if (text.startsWith('command not found') || text.startsWith('Error:')) {
+                            line.innerHTML = `<span class="error-output">${escapedText}</span>`;
+                        } else if (text.startsWith('cat:') || text.startsWith('ls:') || text.startsWith('cd:')) {
+                            line.innerHTML = `<span class="error-output">${escapedText}</span>`;
+                        } else {
+                            line.innerHTML = escapedText;
+                        }
+                    }
+                }
+                
+                terminalOutput.appendChild(line);
+                scrollToBottom();
+            }
+
+            function escapeHTML(str) {
+                if (typeof str !== 'string') return str;
+                return str.replace(/&/g, '&amp;')
+                         .replace(/</g, '<')
+                         .replace(/>/g, '>');
+            }
+
+            function scrollToBottom() {
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            }
+
+            // FIXED: Single execution works properly with error handling
+            function processCommand(command) {
+                if (!command.trim()) return;
+                
+                // Add to history first
+                if (commandHistory.length === 0 || commandHistory[commandHistory.length - 1] !== command) {
+                    commandHistory.push(command);
+                    if (commandHistory.length > 100) {
+                        commandHistory.shift();
+                    }
+                }
+                historyIndex = -1;
+                
+                // Display command
+                addToTerminal(command, true);
+                
+                try {
+                    // Execute command
+                    const response = executeCommand(command);
+                    
+                    // Display response
+                    if (response !== undefined && response !== null) {
+                        addToTerminal(response);
+                    }
+                } catch (error) {
+                    console.error('Error processing command:', error);
+                    addToTerminal(`Error: ${error.message || error.toString()}`);
+                }
+                
+                // Clear input and refocus
+                commandInput.value = '';
+                setTimeout(() => {
+                    commandInput.focus();
+                }, 10);
+            }
+
+            function expandWildcards(pattern) {
+                const dirPath = pattern.startsWith('/') ? '/' : currentPath;
+                const fileNamePattern = pattern.split('/').pop();
+                const regexPattern = fileNamePattern.replace(/\*/g, '.*');
+                const regex = new RegExp(`^${regexPattern}$`);
+                
+                const dir = navigateToPath(fileSystem, dirPath);
+                if (!dir || dir.type !== 'directory') return [];
+                
+                return Object.entries(dir.contents)
+                    .filter(([name, item]) => item.type === 'file' && regex.test(name))
+                    .map(([name, item]) => item);
+            }
+
+            // Handle command input
+            commandInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const command = commandInput.value.trim();
+                    if (command) {
+                        processCommand(command);
+                    } else {
+                        // If empty command, just add a new prompt line
+                        addToTerminal('', true);
+                    }
+                } else if (e.key === 'Tab') {
+                    e.preventDefault();
+                    handleTabCompletion();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (historyIndex < commandHistory.length - 1) {
+                        historyIndex++;
+                        commandInput.value = commandHistory[commandHistory.length - 1 - historyIndex];
+                        commandInput.setSelectionRange(commandInput.value.length, commandInput.value.length);
+                    }
+                } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (historyIndex >= 0) {
+                        historyIndex--;
+                        if (historyIndex >= 0) {
+                            commandInput.value = commandHistory[commandHistory.length - 1 - historyIndex];
+                        } else {
+                            commandInput.value = '';
+                        }
+                        commandInput.setSelectionRange(commandInput.value.length, commandInput.value.length);
+                    }
+                } else {
+                    // Reset completion state on any other key
+                    completionState = { prefix: '', matches: [], index: 0, baseDir: '', currentWord: '' };
+                }
+            });
+
+            commandInput.addEventListener('input', () => {
+                if (commandInput.value !== completionState.prefix) {
+                    completionState = { prefix: '', matches: [], index: 0, baseDir: '', currentWord: '' };
+                }
+            });
+
+            document.querySelector('.right-side').addEventListener('click', () => {
+                commandInput.focus();
+            });
+
+            // Typing effect
+            function typeWriterEffect() {
+                const roles = [
+                    'PCB DESIGN ENGINEER',
+                    'EMBEDDED SYSTEMS DEVELOPER', 
+                    'IOT SYSTEMS ENGINEER',
+                    'Aspiring Data Scientist',
+                    'Machine Learning Enthusiast',
+                    'VOIP ENGINEER'
+                ];
+                
+                let currentRoleIndex = 0;
+                let currentText = '';
+                let isDeleting = false;
+                
+                function type() {
+                    const currentRole = roles[currentRoleIndex];
+                    
+                    if (isDeleting) {
+                        currentText = currentRole.substring(0, currentText.length - 1);
+                    } else {
+                        currentText = currentRole.substring(0, currentText.length + 1);
+                    }
+                    
+                    typingRole.textContent = currentText;
+                    
+                    let typingSpeed = isDeleting ? 50 : 100;
+                    
+                    if (!isDeleting && currentText === currentRole) {
+                        typingSpeed = 1000;
+                        isDeleting = true;
+                    } else if (isDeleting && currentText === '') {
+                        isDeleting = false;
+                        currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                    }
+                    
+                    setTimeout(type, typingSpeed);
+                }
+                
+                setTimeout(type, 200);
+            }
+
+            // Initialize terminal
+            window.addEventListener('load', () => {
+                typeWriterEffect();
+                
+                setTimeout(() => {
+                    addToTerminal('Professional Engineering Terminal v3.0.0 initialized...');
+                    addToTerminal(`Welcome! Type 'help' to get started.`);
+                    addToTerminal('');
+                    scrollToBottom();
+                    commandInput.focus();
+                }, 500);
+            });
+        </script>
     </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="bg-gray-800 py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-8 text-center">Skills</h3>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div>
-          <h4 class="text-xl font-semibold mb-4">Core Skills</h4>
-          <ul class="list-disc list-inside space-y-2">
-            <li>Circuit Design, PCB Design</li>
-            <li>Embedded Systems, IoT, AI</li>
-            <li>Python, C/C++, MATLAB</li>
-            <li>Arduino, ESP32, Django</li>
-            <li>OpenVINO, Firebase</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-xl font-semibold mb-4">Additional Skills</h4>
-          <ul class="list-disc list-inside space-y-2">
-            <li>DevOps, Docker, AWS</li>
-            <li>VoIP (FreeSWITCH), Linux Server Management</li>
-            <li>Data Analysis, Technical Writing</li>
-            <li>Leadership & Team Management</li>
-            <li>Languages: English (Pro), Urdu & Punjabi (Native)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section id="tech-stack" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
-    <h3 class="text-3xl font-semibold mb-8 text-center">Tech Stack & Tools</h3>
-    <div class="flex flex-wrap justify-center gap-4 text-center">
-      <span class="bg-gray-700 px-3 py-1 rounded">Circuit Design</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">PCB Design</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">Embedded Systems</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">IoT</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">AI</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">DevOps</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">VoIP (FreeSWITCH)</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">Docker</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">AWS</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">Python</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">C/C++</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">MATLAB</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">Arduino</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">ESP32</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">Django</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">OpenVINO</span>
-      <span class="bg-gray-700 px-3 py-1 rounded">Firebase</span>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section id="education" class="bg-gray-800 py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-8 text-center">Education</h3>
-      <div class="space-y-6 max-w-3xl mx-auto">
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h4 class="text-xl font-semibold mb-2">COMSATS University Islamabad</h4>
-          <p class="mb-2"><strong>Sept 2021 – Expected July 2025</strong></p>
-          <p>B.Sc. Electrical & Computer Engineering</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h4 class="text-xl font-semibold mb-2">Punjab College of Commerce</h4>
-          <p class="mb-2"><strong>2018 - 2020</strong></p>
-          <p>Intermediate, Pre-Engineering</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h4 class="text-xl font-semibold mb-2">Dar-e-Arqam School</h4>
-          <p class="mb-2"><strong>Matric</strong></p>
-          <p>Computer Science</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience" class="py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-8 text-center">Experience</h3>
-      <div class="space-y-6 max-w-4xl mx-auto">
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h4 class="text-xl font-semibold mb-2">VoIP Intern</h4>
-          <p class="mb-2"><strong>Feb – Apr 2025</strong></p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>PBX systems, FreeSWITCH, Docker, CI/CD pipelines</li>
-            <li>Linux server management</li>
-          </ul>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h4 class="text-xl font-semibold mb-2">Embedded Systems Intern</h4>
-          <p class="mb-2"><strong>Jan – Feb 2025</strong></p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>PIC16F877A-based microwave control</li>
-            <li>Firmware in C, MPLAB IDE</li>
-          </ul>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h4 class="text-xl font-semibold mb-2">AI & Software Intern</h4>
-          <p class="mb-2"><strong>Jun – Aug 2024</strong></p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>AI object detection (YOLO), text recognition (EasyOCR)</li>
-            <li>Dot matrix library development</li>
-          </ul>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h4 class="text-xl font-semibold mb-2">Operations Manager</h4>
-          <p class="mb-2"><strong>Feb – Jun 2024</strong></p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>IEEE event coordination, G Suite for team productivity</li>
-          </ul>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h4 class="text-xl font-semibold mb-2">Remote Intern</h4>
-          <p class="mb-2"><strong>Jul – Dec 2023</strong></p>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Course facilitation and development at Nobel Learning PBC</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="bg-gray-800 py-12 md:py-20">
-    <div class="max-w-7xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold mb-8 text-center">Projects</h3>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-          <h4 class="text-xl font-semibold mb-2">Smart Cart with ML & Raspberry Pi</h4>
-          <p>AI-powered shopping cart with object detection and real-time data processing.</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-          <h4 class="text-xl font-semibold mb-2">ESP32 Smart Home with Firebase</h4>
-          <p>IoT-based home automation system with remote control and data logging.</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-          <h4 class="text-xl font-semibold mb-2">Line-Following Robot</h4>
-          <p>Autonomous robot using sensors and microcontroller for line tracking.</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-          <h4 class="text-xl font-semibold mb-2">Generator Auto Switch</h4>
-          <p>Automatic switching system for generator backup power.</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
-          <h4 class="text-xl font-semibold mb-2">Home Automation Kit</h4>
-          <p>DIY kit for smart home automation with microcontrollers and sensors.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
-    <h3 class="text-3xl font-semibold mb-8 text-center">Certifications</h3>
-    <div class="max-w-3xl mx-auto space-y-4">
-      <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
-        <ul class="list-disc list-inside">
-          <li>Python Programming</li>
-          <li>C++ & MATLAB</li>
-          <li>AI Agents & Data Science</li>
-          <li>LeetCode Challenge</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
-    <h3 class="text-3xl font-semibold mb-8 text-center">Contact Me</h3>
-    <div class="max-w-2xl mx-auto bg-gray-700 p-8 rounded-lg shadow-lg space-y-4">
-      <p><strong>📞</strong> +923311411160</p>
-      <p><strong>📧</strong> <a href="mailto:haroonraza63@gmail.com" class="text-blue-400 hover:underline">haroonraza63@gmail.com</a></p>
-      <p><strong>📍</strong> Islamabad</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 py-6 text-center">
-    <p>&copy; 2025 Haroon Raza. All rights reserved.</p>
-  </footer>
-
-  <script>
-    // Smooth scroll to sections
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
 </body>
 </html>
