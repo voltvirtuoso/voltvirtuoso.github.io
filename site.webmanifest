@@ -1,0 +1,16 @@
+{
+  "name": "Haroon Raza — Instrument Engineer & Embedded Systems",
+  "short_name": "Haroon Raza",
+  "description": "Portfolio of Haroon Raza, Instrument Engineer and Embedded Systems practitioner.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080c12",
+  "theme_color": "#080c12",
+  "icons": [
+    {
+      "src": "assets/media/favicon_962d1a23.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
