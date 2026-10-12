@@ -3,8 +3,16 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="Designing a Smart Cart module around barcode-first interactions, targeted computer vision, customer feedback, and operator tools.">
+      <meta name="description" content="Why our Smart Cart uses barcodes first and few-shot vision second, and what that did to the design.">
       <meta name="theme-color" content="#080c12">
+<link rel="canonical" href="https://voltvirtuoso.github.io/blog/few-shot-retail.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Haroon Raza">
+<meta property="og:title" content="Few-shot detection is a product decision, not just a model | Haroon Raza">
+<meta property="og:description" content="Why our Smart Cart uses barcodes first and few-shot vision second, and what that did to the design.">
+<meta property="og:url" content="https://voltvirtuoso.github.io/blog/few-shot-retail.html">
+<meta name="twitter:card" content="summary">
+
       <meta name="color-scheme" content="dark">
       <link rel="icon" href="../assets/media/favicon_962d1a23.svg" type="image/svg+xml">
       <link rel="manifest" href="../site.webmanifest">
@@ -32,11 +40,11 @@
       <a href="../about.html">About</a>
       <a href="../experience.html">Experience</a>
       <a href="../projects.html">Projects</a>
-      <a href="../blog/index.html" aria-current="page">Field notes</a>
+      <a href="../blog/index.html" aria-current="page">Blog</a>
       <a href="../contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a class="nav-resume" href="../assets/media/Haroon-Raza-Resume_d0734376.pdf" target="_blank" rel="noopener">Resume</a>
+      <a class="nav-resume" href="../assets/media/Haroon-Raza-Resume.pdf" target="_blank" rel="noopener">Resume</a>
       <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -47,21 +55,21 @@
       <main id="main">
           <section class="article-hero">
       <div class="container article-hero-inner" data-reveal>
-        <p class="eyebrow">Field notes / AI / data</p>
+        <p class="eyebrow">Blog / AI / data</p>
         <h1 class="article-title">Few-shot detection is a product decision, not just a model</h1>
-        <p class="article-dek">Designing a Smart Cart module around barcode-first interactions, targeted computer vision, customer feedback, and operator tools.</p>
+        <p class="article-dek">Why our Smart Cart uses barcodes first and few-shot vision second, and what that did to the design.</p>
         <div class="article-info"><span><b>Jun 29, 2026</b></span><span>6 min read</span><span>By Haroon Raza</span></div>
         <div class="tag-list"><span class="tag">AI / data</span><span class="tag">Retail</span><span class="tag">Systems</span></div>
       </div>
     </section>
     <section class="container article-shell">
-      <aside class="article-sidebar" data-reveal><h2>In this note</h2><a href="#barcode">Barcode first</a><a href="#fewshot">Where few-shot fits</a><a href="#interface">The interface</a><a href="#operations">Plan for the operator</a><a href="#takeaway">The takeaway</a><a class="share" href="#" data-share-link>Copy article link</a></aside>
+      <aside class="article-sidebar" data-reveal><h2>On this page</h2><a href="#barcode">Barcode first</a><a href="#fewshot">Where few-shot fits</a><a href="#interface">The interface</a><a href="#operations">Plan for the operator</a><a href="#takeaway">Summary</a><a class="share" href="#" data-share-link>Copy article link</a></aside>
       <article class="article-content" data-reveal><p class="lead">A model can be impressive and still be the wrong first decision. In retail systems, the useful question is not “can vision recognize every item?” but “what mix of signals gives the customer and operator the most reliable result for the least unnecessary complexity?”</p>
 <p>In a collaborative Smart Cart ML module, barcode scanning was treated as the primary item-detection path. Few-shot object detection, a Raspberry Pi 5 touch interface, a RAG-based chatbot, Dockerized services, and a Django admin dashboard added capability around that simple foundation. The key product lesson was to let machine learning solve the parts that actually need machine learning.</p>
 <h2 id="barcode">Barcode first is a systems choice</h2>
 <p>Barcode scanning is fast, low-cost, and already associated with a structured product identifier. It avoids asking a vision model to infer an identity that the product can often state directly. For a practical cart experience, this reduces the computational load and lowers the chance of confusing visually similar products.</p>
 <p>That does not make computer vision irrelevant. It changes its role. Vision can help where a barcode is unavailable, an item is unusual, or an extra confidence signal improves the user experience. The result is a layered system rather than a single model expected to solve every interaction.</p>
-<div class="article-callout"><b>Product principle</b><p>Use the most dependable low-friction signal as the default. Introduce an advanced model where it closes a real gap, not simply because it is technically available.</p></div>
+<div class="article-callout"><b>Design rule</b><p>Use the most dependable low-friction signal as the default. Introduce an advanced model where it closes a real gap, not simply because it is technically available.</p></div>
 <h2 id="fewshot">Where few-shot detection fits</h2>
 <p>Few-shot object detection is attractive when new product types must be introduced without collecting a large labelled dataset. In the Smart Cart module, the target was to extend detection using fewer than five training samples per item. That is valuable for product turnover, but it should be evaluated as an operational workflow, not only as an accuracy number.</p>
 <p>Questions worth asking include: Who captures the initial samples? What background variation is needed? How is a new class validated before it appears for customers? What happens when confidence is low? A model that learns quickly is useful only if the surrounding process makes that speed trustworthy.</p>
@@ -71,41 +79,41 @@
 <h2 id="operations">Plan for the operator too</h2>
 <p>The project also included Dockerized services and a Django admin dashboard for sales trends and customer behaviour. These pieces matter because a system is not complete when the customer sees it. Someone needs to update products, examine trends, identify failures, and understand whether the deployed experience is doing useful work.</p>
 <ul><li>Containerization helps make services more consistent across development and deployment environments.</li><li>An admin view can turn anonymous usage into a clearer operating picture.</li><li>Low-power optimization keeps the hardware constraints visible as the feature set grows.</li><li>A correction path is essential when item detection is uncertain or wrong.</li></ul>
-<h2 id="takeaway">The takeaway</h2>
-<p>Few-shot detection can be powerful, especially where categories change quickly. But the more useful lesson is architectural: pair advanced intelligence with simple, dependable signals; make uncertainty visible; and design the operational tools around the model. That is how a capability becomes a product system rather than a standalone demo.</p>
+<h2 id="takeaway">Summary</h2>
+<p>Few-shot detection is useful, especially when the product range keeps changing. But the bigger lesson was in the design: pair the model with simple, dependable signals, show the user when the system is unsure, and build the tools the store operator needs around it.</p>
 
-        <div class="article-author"><span class="author-mark">HR</span><p><b>Haroon Raza</b>Instrument Engineer and Electrical Engineering graduate writing about the practical side of systems, automation, and connected devices.</p></div>
+        <div class="article-author"><span class="author-mark">HR</span><p><b>Haroon Raza</b>Instrument engineer at VELOSI. I write about embedded systems, automation and the projects I build.</p></div>
       </article>
     </section>
-    <section class="section-tight section-rule article-related"><div class="container"><div class="section-heading" data-reveal><div><p class="eyebrow">Keep reading</p><h2 class="section-title">More notes from the field.</h2></div><a class="text-link" href="index.html">All notes</a></div><div class="card-grid two" data-reveal><article class="blog-card"><a class="card-cover" href="voip-delivery.html" aria-label="Read Treating a VoIP lab like a deployable service"></a><div class="blog-meta"><span>Jul 24, 2026</span><span class="reading">5 min read</span></div><h3>Treating a VoIP lab like a deployable service</h3><p>Containerization and a clear operating picture help turn technical capability into a manageable service.</p><div class="tag-list"><span class="tag">Delivery</span><span class="tag">Linux</span></div><div class="card-footer"><a class="text-link" href="voip-delivery.html">Read note</a><span class="card-arrow">↗</span></div></article><article class="blog-card"><a class="card-cover" href="reliable-esp32-state.html" aria-label="Read Reliable ESP32 automation starts with state"></a><div class="blog-meta"><span>Aug 10, 2026</span><span class="reading">6 min read</span></div><h3>Reliable ESP32 automation starts with state</h3><p>The durable parts of a system are often the parts a demo does not immediately show.</p><div class="tag-list"><span class="tag">Embedded</span><span class="tag">Reliability</span></div><div class="card-footer"><a class="text-link" href="reliable-esp32-state.html">Read note</a><span class="card-arrow">↗</span></div></article></div></div></section>
+    <section class="section-tight section-rule article-related"><div class="container"><div class="section-heading" data-reveal><div><p class="eyebrow">Keep reading</p><h2 class="section-title">More posts.</h2></div><a class="text-link" href="index.html">All notes</a></div><div class="card-grid two" data-reveal><article class="blog-card"><a class="card-cover" href="voip-delivery.html" aria-label="Read Treating a VoIP lab like a deployable service"></a><div class="blog-meta"><span>Jul 24, 2026</span><span class="reading">5 min read</span></div><h3>Treating a VoIP lab like a deployable service</h3><p>Containerization and a clear operating picture help turn technical capability into a manageable service.</p><div class="tag-list"><span class="tag">Delivery</span><span class="tag">Linux</span></div><div class="card-footer"><a class="text-link" href="voip-delivery.html">Read post</a><span class="card-arrow">↗</span></div></article><article class="blog-card"><a class="card-cover" href="reliable-esp32-state.html" aria-label="Read Reliable ESP32 automation starts with state"></a><div class="blog-meta"><span>Aug 10, 2026</span><span class="reading">6 min read</span></div><h3>Reliable ESP32 automation starts with state</h3><p>The durable parts of a system are often the parts a demo does not immediately show.</p><div class="tag-list"><span class="tag">Embedded</span><span class="tag">Reliability</span></div><div class="card-footer"><a class="text-link" href="reliable-esp32-state.html">Read post</a><span class="card-arrow">↗</span></div></article></div></div></section>
 
       </main>
       <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <p class="eyebrow">Designed for reliable systems</p>
-        <h2 class="footer-heading">Turning practical engineering into systems that hold up.</h2>
-        <p>Instrument engineering, embedded systems, automation, and the discipline of making technology useful in the real world.</p>
+        <p class="eyebrow">Instrument Engineer</p>
+        <h2 class="footer-heading">Haroon Raza</h2>
+        <p>Based in Islamabad, Pakistan. Electrical Engineering graduate from COMSATS. I work on asset integrity at VELOSI and build embedded, automation and open-source projects.</p>
       </div>
       <div class="footer-column">
         <h2>Explore</h2>
         <a href="../about.html">About</a>
         <a href="../experience.html">Experience</a>
         <a href="../projects.html">Projects</a>
-        <a href="../blog/index.html">Field notes</a>
+        <a href="../blog/index.html">Blog</a>
       </div>
       <div class="footer-column">
         <h2>Elsewhere</h2>
         <a href="https://github.com/voltvirtuoso" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         <a href="https://www.linkedin.com/in/haroon-khr" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         <a href="mailto:haroonraza63@gmail.com">Email</a>
-        <a href="../assets/media/Haroon-Raza-Resume_d0734376.pdf" target="_blank" rel="noopener">Resume PDF ↗</a>
+        <a href="../assets/media/Haroon-Raza-Resume.pdf" target="_blank" rel="noopener">Resume PDF ↗</a>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span data-current-year></span> Haroon Raza</span>
-      <span>Built with clarity, curiosity &amp; a systems mindset</span>
+      <span>Plain HTML, CSS and JavaScript</span>
     </div>
   </div>
 </footer>

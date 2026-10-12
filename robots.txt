@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Add your deployed sitemap URL here after choosing a domain.
+Sitemap: https://voltvirtuoso.github.io/sitemap.xml

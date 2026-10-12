@@ -95,7 +95,7 @@
     blogSearch.addEventListener('input', updateSearch);
   }
 
-  // Lightweight static contact form: it assembles a thoughtful, readable mailto.
+  // Lightweight static contact form: it builds a readable mailto link.
   const contactForm = $('[data-contact-form]');
   if (contactForm) {
     const status = $('[data-form-status]', contactForm);

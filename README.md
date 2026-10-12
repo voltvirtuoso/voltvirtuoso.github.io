@@ -1,11 +1,9 @@
-# Haroon Raza Portfolio — Static Export
+# Haroon Raza: portfolio
 
-This folder is a plain static site. It contains **HTML, CSS, JavaScript, and local assets only**. It does not require Node.js, TypeScript, React, Vite, or a server application.
+Plain static site (HTML, CSS, JavaScript). No build step.
 
-## Hosting
-
-Upload the contents of this folder directly to any static host, such as GitHub Pages, Netlify, Cloudflare Pages, or a standard web server. Keep the folder structure intact so that pages, local media, CSS, JavaScript, and resume links continue to work.
-
-## Entry point
-
-Open index.html locally for a quick preview, or set index.html as the default document on your host.
+- Entry point: `index.html`
+- Deploy: push the contents of this folder to the `voltvirtuoso.github.io` repository (GitHub Pages).
+- Resume: `assets/media/Haroon-Raza-Resume.pdf`. Replace that one file when the resume changes.
+  `Haroon-Raza-Resume_d0734376.pdf` is an identical copy kept only so older links and the QR code
+  printed on the PDF keep working. Update both when you update the resume.

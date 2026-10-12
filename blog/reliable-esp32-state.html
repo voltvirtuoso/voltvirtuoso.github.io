@@ -3,8 +3,16 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="A practical pattern for persistence, safe startup, and honest telemetry in connected embedded systems.">
+      <meta name="description" content="What an ESP32 should save, check and report when it restarts, based on what I learned using NVS and SPIFFS at CMGL.">
       <meta name="theme-color" content="#080c12">
+<link rel="canonical" href="https://voltvirtuoso.github.io/blog/reliable-esp32-state.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Haroon Raza">
+<meta property="og:title" content="Reliable ESP32 automation starts with state | Haroon Raza">
+<meta property="og:description" content="What an ESP32 should save, check and report when it restarts, based on what I learned using NVS and SPIFFS at CMGL.">
+<meta property="og:url" content="https://voltvirtuoso.github.io/blog/reliable-esp32-state.html">
+<meta name="twitter:card" content="summary">
+
       <meta name="color-scheme" content="dark">
       <link rel="icon" href="../assets/media/favicon_962d1a23.svg" type="image/svg+xml">
       <link rel="manifest" href="../site.webmanifest">
@@ -32,11 +40,11 @@
       <a href="../about.html">About</a>
       <a href="../experience.html">Experience</a>
       <a href="../projects.html">Projects</a>
-      <a href="../blog/index.html" aria-current="page">Field notes</a>
+      <a href="../blog/index.html" aria-current="page">Blog</a>
       <a href="../contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
-      <a class="nav-resume" href="../assets/media/Haroon-Raza-Resume_d0734376.pdf" target="_blank" rel="noopener">Resume</a>
+      <a class="nav-resume" href="../assets/media/Haroon-Raza-Resume.pdf" target="_blank" rel="noopener">Resume</a>
       <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -47,21 +55,21 @@
       <main id="main">
           <section class="article-hero">
       <div class="container article-hero-inner" data-reveal>
-        <p class="eyebrow">Field notes / Embedded</p>
+        <p class="eyebrow">Blog / Embedded</p>
         <h1 class="article-title">Reliable ESP32 automation starts with state</h1>
-        <p class="article-dek">A practical pattern for persistence, safe startup, and honest telemetry in connected embedded systems.</p>
+        <p class="article-dek">What an ESP32 should save, check and report when it restarts, based on what I learned using NVS and SPIFFS at CMGL.</p>
         <div class="article-info"><span><b>Aug 10, 2026</b></span><span>6 min read</span><span>By Haroon Raza</span></div>
         <div class="tag-list"><span class="tag">Embedded</span><span class="tag">IoT</span><span class="tag">Reliability</span></div>
       </div>
     </section>
     <section class="container article-shell">
-      <aside class="article-sidebar" data-reveal><h2>In this note</h2><a href="#state">State is more than a saved value</a><a href="#boot">Design a boot sequence</a><a href="#storage">Use the storage layer</a><a href="#honesty">Make status honest</a><a href="#takeaway">The takeaway</a><a class="share" href="#" data-share-link>Copy article link</a></aside>
-      <article class="article-content" data-reveal><p class="lead">An ESP32 that reconnects to Wi-Fi after a reboot is not necessarily reliable. The more important question is whether it returns to a safe, intelligible operating state—and whether the person using it can tell what happened.</p>
+      <aside class="article-sidebar" data-reveal><h2>On this page</h2><a href="#state">State is more than a saved value</a><a href="#boot">Design a boot sequence</a><a href="#storage">Use the storage layer</a><a href="#honesty">Report status accurately</a><a href="#takeaway">Summary</a><a class="share" href="#" data-share-link>Copy article link</a></aside>
+      <article class="article-content" data-reveal><p class="lead">An ESP32 that reconnects to Wi-Fi after a reboot is not necessarily reliable. The more important question is whether it returns to a safe, intelligible operating state, and whether the person using it can tell what happened.</p>
 <p>During embedded systems work, I used ESP32 NVS and SPIFFS to keep calibration data, user settings, and web content available after reboots. That experience made a simple point clearer: persistence is part of the system design, not a later convenience feature. When a device controls something physical, restarting without context can be just as risky as disconnecting.</p>
 <h2 id="state">State is more than a saved value</h2>
 <p>It helps to separate three kinds of state. First is <strong>configuration</strong>: settings a user or technician expects to survive, such as thresholds, device names, calibration constants, and network details. Second is <strong>operating context</strong>: information that helps the firmware decide how to re-enter the workflow after a reset. Third is <strong>safety state</strong>: the conditions that should default to a known mode until the device has verified its inputs and outputs.</p>
 <p>Not every value deserves permanent storage. Writing too often increases wear and can preserve noise rather than meaning. A better approach is to store changes when they represent an intentional checkpoint: a user saves a setting, calibration completes successfully, or a configuration version is updated.</p>
-<div class="article-callout"><b>Useful question</b><p>If power disappears at the least convenient moment, what must the device remember, what must it re-check, and what must it refuse to assume?</p></div>
+<div class="article-callout"><b>Worth asking</b><p>If power disappears at the least convenient moment, what must the device remember, what must it re-check, and what must it refuse to assume?</p></div>
 <h2 id="boot">Design a boot sequence, not a reboot</h2>
 <p>A reliable startup sequence should be visible in the design. That does not mean a complicated framework. It means deciding what happens before control is enabled. One useful mental model is:</p>
 <pre class="code-block"><span class="comment">// The control path should earn its way back to action.</span>
@@ -77,44 +85,44 @@
 <p>On ESP32 projects, <code>NVS</code> is a natural fit for small key-value settings such as calibration points, flags, and user preferences. A filesystem such as <code>SPIFFS</code> can suit larger web assets or structured data that needs file-like handling. The right choice depends on the data shape, but the design questions are the same:</p>
 <ul><li>What is the source of truth for this value?</li><li>How will an older saved format be recognized after the firmware changes?</li><li>What happens when a value is missing, out of range, or partially written?</li><li>Can the system boot into a safe, recoverable mode without it?</li></ul>
 <p>Versioning is especially helpful. A small configuration version allows the firmware to migrate a known older structure, set safe defaults when it cannot, and make the change visible in the status output. That is much easier to troubleshoot than an unexplained reset to factory behaviour.</p>
-<h2 id="honesty">Make status honest</h2>
+<h2 id="honesty">Report status accurately</h2>
 <p>Persistent state can create a false sense of certainty if it is not paired with current observation. A saved tank threshold is useful; it is not a current water-level reading. A saved output preference is useful; it is not proof that a relay is physically responding. Good telemetry labels those differences clearly.</p>
 <p>For a connected automation system, I prefer a small status snapshot that includes configuration health, sensor freshness, network state, last command, and current control mode. Even a simple web page or MQTT topic becomes more useful when it answers the practical question: <em>is the device safe to trust right now?</em></p>
-<h2 id="takeaway">The takeaway</h2>
-<p>Reliable embedded work is often quiet work. It is a sensible default, a checked input, a saved calibration value, and an explicit status message. These details may not look dramatic in a demo, but they are the parts that keep a connected device understandable after the first restart, the first outage, and the first real-world surprise.</p>
+<h2 id="takeaway">Summary</h2>
+<p>Most of this is unglamorous: a sensible default, a checked input, a saved calibration value, a clear status message. None of it shows up in a demo, but it decides whether the device still makes sense after the first restart and the first power cut.</p>
 
-        <div class="article-author"><span class="author-mark">HR</span><p><b>Haroon Raza</b>Instrument Engineer and Electrical Engineering graduate writing about the practical side of systems, automation, and connected devices.</p></div>
+        <div class="article-author"><span class="author-mark">HR</span><p><b>Haroon Raza</b>Instrument engineer at VELOSI. I write about embedded systems, automation and the projects I build.</p></div>
       </article>
     </section>
-    <section class="section-tight section-rule article-related"><div class="container"><div class="section-heading" data-reveal><div><p class="eyebrow">Keep reading</p><h2 class="section-title">More notes from the field.</h2></div><a class="text-link" href="index.html">All notes</a></div><div class="card-grid two" data-reveal><article class="blog-card"><a class="card-cover" href="multi-source-automation.html" aria-label="Read Designing automation that can choose a power source"></a><div class="blog-meta"><span>Aug 03, 2026</span><span class="reading">7 min read</span></div><h3>Designing automation that can choose a power source</h3><p>Source priorities, failover, telemetry, and local control boundaries in a three-source system.</p><div class="tag-list"><span class="tag">Automation</span><span class="tag">Power</span></div><div class="card-footer"><a class="text-link" href="multi-source-automation.html">Read note</a><span class="card-arrow">↗</span></div></article><article class="blog-card"><a class="card-cover" href="interrupts-debounce.html" aria-label="Read A button is a control problem"></a><div class="blog-meta"><span>Jun 14, 2026</span><span class="reading">4 min read</span></div><h3>A button is a control problem</h3><p>Input debouncing and short interrupt routines are small details with large usability effects.</p><div class="tag-list"><span class="tag">Firmware</span><span class="tag">Inputs</span></div><div class="card-footer"><a class="text-link" href="interrupts-debounce.html">Read note</a><span class="card-arrow">↗</span></div></article></div></div></section>
+    <section class="section-tight section-rule article-related"><div class="container"><div class="section-heading" data-reveal><div><p class="eyebrow">Keep reading</p><h2 class="section-title">More posts.</h2></div><a class="text-link" href="index.html">All notes</a></div><div class="card-grid two" data-reveal><article class="blog-card"><a class="card-cover" href="multi-source-automation.html" aria-label="Read Designing automation that can choose a power source"></a><div class="blog-meta"><span>Aug 03, 2026</span><span class="reading">7 min read</span></div><h3>Designing automation that can choose a power source</h3><p>Source priorities, failover, telemetry, and local control boundaries in a three-source system.</p><div class="tag-list"><span class="tag">Automation</span><span class="tag">Power</span></div><div class="card-footer"><a class="text-link" href="multi-source-automation.html">Read post</a><span class="card-arrow">↗</span></div></article><article class="blog-card"><a class="card-cover" href="interrupts-debounce.html" aria-label="Read A button is a control problem"></a><div class="blog-meta"><span>Jun 14, 2026</span><span class="reading">4 min read</span></div><h3>A button is a control problem</h3><p>Input debouncing and short interrupt routines are small details with large usability effects.</p><div class="tag-list"><span class="tag">Firmware</span><span class="tag">Inputs</span></div><div class="card-footer"><a class="text-link" href="interrupts-debounce.html">Read post</a><span class="card-arrow">↗</span></div></article></div></div></section>
 
       </main>
       <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <p class="eyebrow">Designed for reliable systems</p>
-        <h2 class="footer-heading">Turning practical engineering into systems that hold up.</h2>
-        <p>Instrument engineering, embedded systems, automation, and the discipline of making technology useful in the real world.</p>
+        <p class="eyebrow">Instrument Engineer</p>
+        <h2 class="footer-heading">Haroon Raza</h2>
+        <p>Based in Islamabad, Pakistan. Electrical Engineering graduate from COMSATS. I work on asset integrity at VELOSI and build embedded, automation and open-source projects.</p>
       </div>
       <div class="footer-column">
         <h2>Explore</h2>
         <a href="../about.html">About</a>
         <a href="../experience.html">Experience</a>
         <a href="../projects.html">Projects</a>
-        <a href="../blog/index.html">Field notes</a>
+        <a href="../blog/index.html">Blog</a>
       </div>
       <div class="footer-column">
         <h2>Elsewhere</h2>
         <a href="https://github.com/voltvirtuoso" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         <a href="https://www.linkedin.com/in/haroon-khr" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         <a href="mailto:haroonraza63@gmail.com">Email</a>
-        <a href="../assets/media/Haroon-Raza-Resume_d0734376.pdf" target="_blank" rel="noopener">Resume PDF ↗</a>
+        <a href="../assets/media/Haroon-Raza-Resume.pdf" target="_blank" rel="noopener">Resume PDF ↗</a>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span data-current-year></span> Haroon Raza</span>
-      <span>Built with clarity, curiosity &amp; a systems mindset</span>
+      <span>Plain HTML, CSS and JavaScript</span>
     </div>
   </div>
 </footer>
